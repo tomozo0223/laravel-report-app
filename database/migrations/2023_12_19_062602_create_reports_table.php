@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('site');
+            $table->string('site_name');
             $table->foreignId('user_id')->constrained();
             $table->text('image_path')->nullable();
             $table->text('body');
-            $table->timestamp('working_day');
+            $table->date('working_day');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->timestamps();
