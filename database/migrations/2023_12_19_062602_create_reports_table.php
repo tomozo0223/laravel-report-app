@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('image_path')->nullable();
             $table->text('body');
             $table->date('working_day');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }
