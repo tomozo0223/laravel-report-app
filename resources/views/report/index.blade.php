@@ -15,9 +15,12 @@
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報一覧</h1>
                 @foreach ($reports as $report)
                     <div class="bg-white p-8 mb-4 rounded-md shadow-md">
-                        <div class="flex justify-between items-center">
+                        <div class="flex items-center justify-between">
                             <h2 class="text-xl font-bold"><a href="#">{{ $report->site_name }}</a></h2>
-                            <p class="text-gray-500">作業日:{{ $report->working_day }}</p>
+                            <div class="ml-4">
+                                <p class="text-gray-500">作業責任者:{{ $report->user->name }}</p>
+                                <p class="text-gray-500">作業日:{{ $report->working_day }}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach
