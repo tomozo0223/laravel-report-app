@@ -15,18 +15,20 @@
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報一覧</h1>
                 @foreach ($reports as $report)
                     <div class="bg-white p-8 mb-4 rounded-md shadow-md">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-xl font-bold"><a href="#">{{ $report->site_name }}</a></h2>
-                            <div class="ml-4">
+                        <div class="flex items-center">
+                            <h2 class="text-xl font-bold">
+                                <a href="#">作業日:{{ $report->working_day }}</a>
+                            </h2>
+                            <h3 class="ml-2 font-bold text-xl ">{{ $report->site_name }}</h3>
+                            <div class="ml-auto">
                                 <p class="text-gray-500">作業責任者:{{ $report->user->name }}</p>
-                                <p class="text-gray-500">作業日:{{ $report->working_day }}</p>
                             </div>
                         </div>
                     </div>
-                @endforeach
-                {{ $reports->links() }}
-            </div>
-        </div>
+ @endforeach
+                                {{ $reports->links() }}
+                        </div>
+                    </div>
     </body>
 
     </html>
