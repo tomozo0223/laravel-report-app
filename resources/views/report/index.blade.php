@@ -11,24 +11,22 @@
 
     <body>
         <div class="bg-gray-300 p-8">
-            <h1 class="text-2xl font-bold text-center mb-4">業務日報一覧</h1>
-            <div class="bg-white p-4 mb-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold"><a href="#">刈羽歩道橋</a></h2>
-                    <p class="text-gray-500">2023-12-23</p>
-                </div>
-            </div>
-            <div class="bg-white p-4 mb-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold"><a href="#">亀田製菓</a></h2>
-                    <p class="text-gray-500">2023-12-21</p>
-                </div>
-            </div>
-            <div class="bg-white p-4 mb-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold"><a href="#">度合歩道橋</a></h2>
-                    <p class="text-gray-500">2023-12-24</p>
-                </div>
+            <div class="w-3/5 m-auto mt-8">
+                <h1 class="text-2xl font-bold text-center mb-8">業務日報一覧</h1>
+                @foreach ($reports as $report)
+                    <div class="bg-white p-8 mb-4 rounded-md shadow-md">
+                        <div class="flex items-center">
+                            <h2 class="text-xl font-bold">
+                                <a href="#">{{ $report->working_day }}</a>
+                            </h2>
+                            <h3 class="ml-2 font-bold text-xl ">{{ $report->site_name }}</h3>
+                            <div class="ml-auto">
+                                <p class="text-gray-500">作業責任者:{{ $report->user->name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{ $reports->links() }}
             </div>
         </div>
     </body>
