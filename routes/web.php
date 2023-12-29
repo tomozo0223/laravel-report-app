@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
 });
 
 require __DIR__ . '/auth.php';
