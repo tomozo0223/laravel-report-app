@@ -17,7 +17,7 @@
                     <div class="bg-white p-8 mb-4 rounded-md shadow-md">
                         <div class="flex items-center">
                             <h2 class="text-xl font-bold">
-                                <a href="#">作業日:{{ $report->working_day }}</a>
+                                <a href="#">{{ $report->working_day }}</a>
                             </h2>
                             <h3 class="ml-2 font-bold text-xl ">{{ $report->site_name }}</h3>
                             <div class="ml-auto">
@@ -25,10 +25,10 @@
                             </div>
                         </div>
                     </div>
- @endforeach
-                                {{ $reports->links() }}
-                        </div>
-                    </div>
+                @endforeach
+                {{ $reports->links() }}
+            </div>
+        </div>
     </body>
 
     </html>
