@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -13,5 +14,11 @@ class ReportController extends Controller
             ->with('user')
             ->paginate(10);
         return  view('report.index', compact('reports'));
+    }
+
+    public function create()
+    {
+        $users = User::all();
+        return view('report.create', compact('users'));
     }
 }
