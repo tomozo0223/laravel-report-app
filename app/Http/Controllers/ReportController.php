@@ -14,4 +14,9 @@ class ReportController extends Controller
             ->paginate(10);
         return  view('report.index', compact('reports'));
     }
+
+    public function show(Report $report)
+    {
+        return view('report.show', compact('report'));
+    }
 }
