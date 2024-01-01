@@ -16,13 +16,33 @@ class ReportController extends Controller
         return  view('report.index', compact('reports'));
     }
 
-  public function create()
+    public function create()
     {
         $users = User::all();
         return view('report.create', compact('users'));
+    }
 
     public function show(Report $report)
     {
         return view('report.show', compact('report'));
+    }
+
+    public function store(Request $request)
+    {
+        $report = Report::create([
+            'site_name' => $request->site_name,
+            'user_id' => auth()->id(),
+            'image_path' => '',
+            'body' => $request->body,
+            'working_day' => $request->working_day,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+        ]);
+
+        if ($request->user_id) {
+            $report->users()->attach($request->user_id);
+        }
+
+        return redirect()->route('report.index')->with('message', '日報を登録しました。');
     }
 }
