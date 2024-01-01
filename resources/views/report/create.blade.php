@@ -14,7 +14,8 @@
             <div class="w-3/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報登録</h1>
                 <div class="max-w-md mx-auto p-8 bg-white border rounded-md shadow-md">
-                    <form action="#" method="GET">
+                    <form action="{{ route('report.store') }}" method="POST">
+                        @csrf
                         <div class="mb-4">
                             <label for="site_name" class="block text-sm font-semibold text-gray-600">現場名:</label>
                             <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md">
@@ -30,14 +31,14 @@
                                 class="w-full p-2 border rounded-md">
                         </div>
                         <div class="mb-4">
-                            <label for="end" class="block text-sm font-semibold text-gray-600">終了時間:</label>
-                            <input type="time" name="end" id="end" class="w-full p-2 border rounded-md">
+                            <label for="end_time" class="block text-sm font-semibold text-gray-600">終了時間:</label>
+                            <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md">
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
                             @foreach ($users as $user)
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" name="users_id[]" value="{{ $user->id }}" class="mr-2">
+                                    <input type="checkbox" name="user_id[]" value="{{ $user->id }}" class="mr-2">
                                     {{ $user->name }}
                                 </label>
                             @endforeach
