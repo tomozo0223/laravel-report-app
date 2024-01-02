@@ -11,10 +11,10 @@
 
     <body>
         <div class="bg-gray-300 p-8">
-            <div class="w-3/5 m-auto mt-8">
+            <div class="w-4/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報登録</h1>
-                <div class="max-w-md mx-auto p-8 bg-white border rounded-md shadow-md">
-                    <form action="{{ route('report.store') }}" method="POST">
+                <div class="max-w-2xl mx-auto p-8 bg-white border rounded-md shadow-md">
+                    <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-4">
                             <label for="site_name" class="block text-sm font-semibold text-gray-600">現場名:</label>
@@ -43,7 +43,13 @@
                                 </label>
                             @endforeach
                         </div>
-                        <div class="mb-4">
+                        <div class="mt-4">
+                            <label for="image" class="block text-sm font-medium text-gray-700">
+                                画像を選択
+                            </label>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div class="mb-4 mt-4">
                             <label for="body" class="block text-sm font-semibold text-gray-600">作業内容:</label>
                             <textarea name="body" id="body" cols="30" rows="5" class="w-full p-2 border rounded-md"
                                 placeholder="作業内容を記入してください"></textarea>
@@ -55,7 +61,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </body>
