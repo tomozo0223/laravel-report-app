@@ -21,15 +21,16 @@
                             @error('site_name')
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
-                            <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md">
+                            <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
+                                value="{{ old('site_name') }}">
                         </div>
                         <div class="mb-4">
                             <label for="working_day" class="block text-sm font-semibold text-gray-600">作業日:</label>
                             @error('working_day')
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
-                            <input type="date" name="working_day" id="working_day"
-                                class="w-full p-2 border rounded-md">
+                            <input type="date" name="working_day"
+                                id="working_day"class="w-full p-2 border rounded-md" value="{{ old('working_day') }}">
                         </div>
                         <div class="mb-4">
                             <label for="start_time" class="block text-sm font-semibold text-gray-600">開始時間:</label>
@@ -37,14 +38,14 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <input type="time" name="start_time" id="start_time"
-                                class="w-full p-2 border rounded-md">
+                                class="w-full p-2 border rounded-md" value="{{ old('start_time') }}">
                         </div>
                         <div class="mb-4">
                             <label for="end_time" class="block text-sm font-semibold text-gray-600">終了時間:</label>
                             @error('end_time')
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
-                            <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md">
+                            <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md" value="{{ old('end_time') }}">
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
@@ -67,7 +68,7 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <textarea name="body" id="body" cols="30" rows="5" class="w-full p-2 border rounded-md"
-                                placeholder="作業内容を記入してください"></textarea>
+                                placeholder="作業内容を記入してください">{{ old('body') }}</textarea>
                         </div>
                         <div class="text-right">
                             <x-primary-button>
