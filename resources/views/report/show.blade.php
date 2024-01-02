@@ -38,6 +38,12 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="mb-4">
+                            @if ($report->image_path)
+                                <img src="{{ Storage::url($report->image_path) }}" alt="現場画像"
+                                    class="w-3/12 h-auto m-auto rounded-md">
+                            @endif
+                        </div>
                         <div class="border-t pt-2">
                             <p>{!! nl2br($report->body) !!}</p>
                         </div>
