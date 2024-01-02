@@ -29,14 +29,18 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $report = Report::create([
-            'site_name' => $request->site_name,
+            'site_name' => $request->input('site_name'),
             'user_id' => auth()->id(),
-            'image_path' => '',
-            'body' => $request->body,
-            'working_day' => $request->working_day,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
+            'image_path' => $request->image ? $path : '',
+            'body' => $request->input('body'),
+            'working_day' => $request->input('working_day'),
+            'start_time' => $request->input('start_time'),
+            'end_time' => $request->input('end_time'),
         ]);
 
         if ($request->user_id) {
