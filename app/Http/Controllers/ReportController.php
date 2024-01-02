@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReportStoreRequest;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,9 +28,8 @@ class ReportController extends Controller
         return view('report.show', compact('report'));
     }
 
-    public function store(Request $request)
+    public function store(ReportStoreRequest $request)
     {
-
         if ($request->hasFile('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('images', $fileName, 'public');
