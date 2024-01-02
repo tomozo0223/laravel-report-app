@@ -31,7 +31,8 @@ class ReportController extends Controller
     {
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images', 'public');
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('images', $fileName, 'public');
         }
         $report = Report::create([
             'site_name' => $request->input('site_name'),
