@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReportStoreRequest;
 use App\Models\Report;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,11 +31,13 @@ class ReportController extends Controller
 
     public function store(ReportStoreRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            if ($request->hasFile('image')) {
-                $fileName = $request->file('image')->getClientOriginalName();
-                $path = $request->file('image')->storeAs('images', $fileName, 'public');
-            }
+        $path = '';
+        if ($request->hasFile('image')) {
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('images', $fileName, 'public');
+        }
+
+        DB::transaction(function () use ($request, $path) {
             $report = Report::create([
                 'site_name' => $request->input('site_name'),
                 'user_id' => auth()->id(),
