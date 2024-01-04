@@ -54,4 +54,14 @@ class ReportController extends Controller
         });
         return redirect()->route('report.index')->with('message', '日報を登録しました。');
     }
+
+    public function edit(Report $report)
+    {
+        $users = User::all();
+        $reportUserId = [];
+        foreach ($report->users as $user) {
+            $reportUserId[] = $user->id;
+        }
+        return view('report.edit', compact('report', 'users', 'reportUserId'));
+    }
 }
