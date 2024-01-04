@@ -9,8 +9,23 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'site_name',
+        'user_id',
+        'image_path',
+        'body',
+        'working_day',
+        'start_time',
+        'end_time',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

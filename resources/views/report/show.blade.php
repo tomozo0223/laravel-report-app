@@ -28,6 +28,22 @@
                             <p>開始時間: {{ $report->start_time }}</p>
                             <p class="ml-4">終了時間: {{ $report->end_time }}</p>
                         </div>
+                        <div class="flex justify-end text-gray-500 mb-2">
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">作業メンバー</h4>
+                                <ul>
+                                    @foreach ($report->users as $user)
+                                        <li>・{{ $user->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            @if ($report->image_path)
+                                <img src="{{ Storage::url($report->image_path) }}" alt="現場画像"
+                                    class="w-3/12 h-auto m-auto rounded-md">
+                            @endif
+                        </div>
                         <div class="border-t pt-2">
                             <p>{!! nl2br($report->body) !!}</p>
                         </div>
