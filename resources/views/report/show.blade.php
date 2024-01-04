@@ -44,8 +44,15 @@
                                     class="w-3/12 h-auto m-auto rounded-md">
                             @endif
                         </div>
-                        <div class="border-t pt-2">
+                        <div class="border-t p-2 border">
                             <p>{!! nl2br($report->body) !!}</p>
+                        </div>
+                        <div class="mt-4 flex justify-end">
+                            @if ($report->user->id === Auth::id())
+                                <x-primary-button>
+                                    <a href="{{ route('report.edit', $report) }}">更新</a>
+                                </x-primary-button>
+                            @endif
                         </div>
                     </div>
                 </div>
