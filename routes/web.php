@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
     Route::get('/report/{report}', [ReportController::class, 'show'])->name('report.show');
     Route::post('/report', [ReportController::class, 'store'])->name('report.store');
+    Route::get('/report/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
 });
 
 require __DIR__ . '/auth.php';
