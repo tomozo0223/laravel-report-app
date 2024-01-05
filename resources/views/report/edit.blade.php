@@ -23,7 +23,7 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
-                                value="{{ $report->site_name }}">
+                                value="{{ old('site_name', $report->site_name) }}">
                         </div>
                         <div class="mb-4">
                             <label for="working_day" class="block text-sm font-semibold text-gray-600">作業日:</label>
@@ -31,7 +31,8 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <input type="date" name="working_day"
-                                id="working_day"class="w-full p-2 border rounded-md" value="{{ $report->working_day }}">
+                                id="working_day"class="w-full p-2 border rounded-md"
+                                value="{{ old('working_day', $report->working_day) }}">
                         </div>
                         <div class="mb-4">
                             <label for="start_time" class="block text-sm font-semibold text-gray-600">開始時間:</label>
@@ -39,7 +40,7 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <input type="time" name="start_time" id="start_time" class="w-full p-2 border rounded-md"
-                                value="{{ $report->start_time }}">
+                                value="{{ old('start_time', $report->start_time) }}">
                         </div>
                         <div class="mb-4">
                             <label for="end_time" class="block text-sm font-semibold text-gray-600">終了時間:</label>
@@ -47,17 +48,14 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md"
-                                value="{{ $report->end_time }}">
+                                value="{{ old('end_time', $report->end_time) }}">
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
                             @foreach ($users as $user)
                                 <label class="inline-flex items-center">
                                     <input type="checkbox" name="user_id[]" value="{{ $user->id }}" class="mr-2"
-                                        @foreach ($reportUserId as $userId)
-                                            @if ($user->id === $userId)
-                                            @checked(old('user_id', $user->id))
-                                            @endif @endforeach>
+                                        @checked(in_array($user->id, old('user_id', $reportUserId)))>
                                     {{ $user->name }} </label>
                             @endforeach
                         </div>
@@ -73,7 +71,7 @@
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
                             <textarea name="body" id="body" cols="30" rows="5" class="w-full p-2 border rounded-md"
-                                placeholder="作業内容を記入してください">{{ $report->body }}</textarea>
+                                placeholder="作業内容を記入してください">{{ old('body', $report->body) }}</textarea>
                         </div>
                         <div class="text-right">
                             <x-primary-button>
