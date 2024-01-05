@@ -14,7 +14,7 @@
             <div class="w-4/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報登録</h1>
                 <div class="max-w-2xl mx-auto p-8 bg-white border rounded-md shadow-md">
-                    <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('report.update', $report) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
