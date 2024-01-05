@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/report/{report}', [ReportController::class, 'show'])->name('report.show');
     Route::post('/report', [ReportController::class, 'store'])->name('report.store');
     Route::get('/report/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
+    Route::put('/report/{report}', [ReportController::class, 'update'])->name('report.update');
 });
 
 require __DIR__ . '/auth.php';
