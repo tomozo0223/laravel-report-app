@@ -37,21 +37,23 @@
                             @error('start_time')
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
-                            <input type="time" name="start_time" id="start_time"
-                                class="w-full p-2 border rounded-md" value="{{ old('start_time') }}">
+                            <input type="time" name="start_time" id="start_time" class="w-full p-2 border rounded-md"
+                                value="{{ old('start_time') }}">
                         </div>
                         <div class="mb-4">
                             <label for="end_time" class="block text-sm font-semibold text-gray-600">終了時間:</label>
                             @error('end_time')
                                 <p class="text-red-600">{{ $message }}</p>
                             @enderror
-                            <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md" value="{{ old('end_time') }}">
+                            <input type="time" name="end_time" id="end_time" class="w-full p-2 border rounded-md"
+                                value="{{ old('end_time') }}">
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
-                            @foreach ($users as $user)
+                            @foreach ($users as $index => $user)
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" name="user_id[]" value="{{ $user->id }}" class="mr-2">
+                                    <input type="checkbox" name="user_id[{{ $index }}]"
+                                        value="{{ $user->id }}" class="mr-2" @checked(old("user_id.$index"))>
                                     {{ $user->name }}
                                 </label>
                             @endforeach
