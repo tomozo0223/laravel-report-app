@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReportStoreRequest;
+use App\Http\Requests\ReportUpdateRequest;
 use App\Models\Report;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
@@ -63,5 +64,28 @@ class ReportController extends Controller
             $reportUserId[] = $user->id;
         }
         return view('report.edit', compact('report', 'users', 'reportUserId'));
+    }
+
+    public function update(ReportUpdateRequest $request, Report $report)
+    {
+        $path = '';
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($report->image_path);
+            $newFileName = $request->file('image')->hashName();
+            $path = $request->file('image')->storeAs('images', $newFileName, 'public');
+        }
+        DB::transaction(function () use ($request, $report, $path) {
+            $report->site_name = $request->input('site_name');
+            $report->body = $request->input('body');
+            $report->image_path = $request->image ? $path : $report->image_path;
+            $report->working_day = $request->input('working_day');
+            $report->start_time = $request->input('start_time');
+            $report->end_time = $request->input('end_time');
+            $report->save();
+            // 中間テーブルの変更
+            $report->users()->sync($request->user_id);
+        });
+
+        return redirect()->route('report.show', $report)->with('message', '更新しました。');
     }
 }

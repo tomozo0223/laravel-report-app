@@ -13,6 +13,9 @@
         <div class="bg-gray-300 p-8 h-screen">
             <div class="w-3/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">日報詳細</h1>
+                @if (session('message'))
+                    {{ session('message') }}
+                @endif
                 <div class="bg-white p-8 mb-4 rounded-md shadow-lg">
                     <div class="flex justify-between items-center mb-4 border-b pb-2">
                         <h2 class="text-xl font-bold">
