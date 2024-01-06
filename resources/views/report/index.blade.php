@@ -14,7 +14,7 @@
             <div class="w-3/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">業務日報一覧</h1>
                 @if (session('message'))
-                    {{ session('message') }}
+                    <p class="text-red-500 font-bold">{{ session('message') }}</p>
                 @endif
                 @foreach ($reports as $report)
                     <div class="bg-white p-8 mb-4 rounded-md shadow-md">
