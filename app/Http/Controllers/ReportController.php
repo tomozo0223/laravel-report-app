@@ -33,7 +33,7 @@ class ReportController extends Controller
     {
         $path = '';
         if ($request->hasFile('image')) {
-            $fileName = $request->file('image')->getClientOriginalName();
+            $fileName = $request->file('image')->hashName();
             $path = $request->file('image')->storeAs('images', $fileName, 'public');
         }
 
