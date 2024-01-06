@@ -33,8 +33,7 @@ class ReportController extends Controller
     {
         $path = '';
         if ($request->hasFile('image')) {
-            $fileName = $request->file('image')->hashName();
-            $path = $request->file('image')->storeAs('images', $fileName, 'public');
+            $path = $request->file('image')->store('images', 'public');
         }
 
         DB::transaction(function () use ($request, $path) {
