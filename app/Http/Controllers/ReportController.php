@@ -71,8 +71,7 @@ class ReportController extends Controller
         $path = '';
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($report->image_path);
-            $newFileName = $request->file('image')->hashName();
-            $path = $request->file('image')->storeAs('images', $newFileName, 'public');
+            $path = $request->file('image')->store('images', 'public');
         }
         DB::transaction(function () use ($request, $report, $path) {
             $report->site_name = $request->input('site_name');
