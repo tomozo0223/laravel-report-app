@@ -55,6 +55,13 @@
                                 <x-primary-button>
                                     <a href="{{ route('report.edit', $report) }}">更新</a>
                                 </x-primary-button>
+                                <form action="{{ route('report.destroy', $report) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-primary-button class="bg-red-600 ml-2">
+                                        削除
+                                    </x-primary-button>
+                                </form>
                             @endif
                         </div>
                     </div>
