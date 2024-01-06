@@ -88,4 +88,19 @@ class ReportController extends Controller
 
         return redirect()->route('report.show', $report)->with('message', '更新しました。');
     }
+
+    public function destroy(Report $report)
+    {
+        DB::transaction(function () use ($report) {
+            if ($report->image_path) {
+                Storage::disk('public')->delete($report->image_path);
+            }
+            if ($report->users) {
+                $report->users()->detach();
+            }
+            $report->delete();
+        });
+
+        return redirect()->route('report.index')->with('message', '削除しました。');
+    }
 }
