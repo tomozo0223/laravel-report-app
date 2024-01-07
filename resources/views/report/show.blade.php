@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <div class="bg-gray-300 p-8 h-screen">
+        <div class="p-8">
             <div class="w-3/5 m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">日報詳細</h1>
                 @if (session('message'))
@@ -65,6 +65,27 @@
                             @endif
                         </div>
                     </div>
+                    <div class="w-full">
+                        <h3>コメント投稿</h3>
+                        @if (session('commentMessage'))
+                            <p class="text-red-500 font-bold">{{ session('commentMessage') }}</p>
+                        @endif
+                        <form action="{{ route('comment.store', $report) }}" method="POST">
+                            @csrf
+                            <div class="block w-full">
+                                @error('body')
+                                    <p class="text-red-600">{{ $message }}</p>
+                                @enderror
+                                <input type="text" name="body" id="body" class="w-full">
+                            </div>
+                            <div class="mt-2 flex justify-end">
+                                <x-primary-button>
+                                    投稿
+                                </x-primary-button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
