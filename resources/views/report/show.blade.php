@@ -67,16 +67,17 @@
                     </div>
                     <div class="bg-white p-8 mb-4 rounded-md shadow-lg">
                         <h2 class="text-2xl font-bold mb-4">コメント一覧</h2>
-                        <div>
-                            @foreach ($report->comments as $comment)
-                                <div class="border p-4 mb-4">
-                                    <h3 class="mb-2 font-bold">投稿者: {{ $comment->user->name }}</h3>
-                                    <hr>
-                                    <p class="text-gray-700 mt-2">{{ $comment->body }}</p>
-                                    <p class="text-right">2024/01/10</p>
-                                </div>
-                            @endforeach
-                        </div>
+                        @forelse ($comments as $comment)
+                            <div class="border p-4 mb-4">
+                                <h3 class="mb-2 font-bold">投稿者: {{ $comment->user->name }}</h3>
+                                <hr>
+                                <p class="text-gray-700 mt-2">{{ $comment->body }}</p>
+                                <p class="text-right">2024/01/10</p>
+                            </div>
+                        @empty
+                            <p>コメントはありません。</p>
+                        @endforelse
+                        {{ $comments->links() }}
                     </div>
                 </div>
             </div>
