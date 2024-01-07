@@ -27,6 +27,7 @@ class ReportController extends Controller
 
     public function show(Report $report)
     {
+        $report = Report::with('comments.user')->findOrFail($report->id);
         return view('report.show', compact('report'));
     }
 
