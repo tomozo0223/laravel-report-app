@@ -88,12 +88,27 @@
 
                     <div class="bg-white p-8 mb-4 rounded-md shadow-lg">
                         <h2 class="text-2xl font-bold mb-4">コメント一覧</h2>
+                        @if (session('deleteMessage'))
+                            <p class="text-red-500 font-bold">{{ session('deleteMessage') }}</p>
+                        @endif
                         @forelse ($comments as $comment)
                             <div class="border p-4 mb-4">
-                                <h3 class="mb-2 font-bold">投稿者: {{ $comment->user->name }}</h3>
+                                <div class="flex justify-between items-center">
+                                    <h3 class="mb-2 font-bold">投稿者: {{ $comment->user->name }}</h3>
+                                    <p class="text-right">2024/01/10</p>
+                                </div>
                                 <hr>
                                 <p class="text-gray-700 mt-2">{{ $comment->body }}</p>
-                                <p class="text-right">2024/01/10</p>
+                                @if (Auth::id() === $comment->user->id)
+                                    <form action="{{ route('comment.destroy', $comment) }}" method="POST"
+                                        class="text-right">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-danger-button>
+                                            削除
+                                        </x-danger-button>
+                                    </form>
+                                @endif
                             </div>
                         @empty
                             <p>コメントはありません。</p>
