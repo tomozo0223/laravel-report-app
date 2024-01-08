@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/report/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
     Route::put('/report/{report}', [ReportController::class, 'update'])->name('report.update');
     Route::delete('/report/{report}', [ReportController::class, 'destroy'])->name('report.destroy');
+    Route::post('/comment/{report}', [CommentController::class, 'store'])->name('comment.store');
 });
 
 require __DIR__ . '/auth.php';
