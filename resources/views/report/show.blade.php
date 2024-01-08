@@ -109,6 +109,7 @@
                                         </x-danger-button>
                                     </form>
                                 @endif
+                                <p class="text-right">{{ $comment->created_at }}</p>
                             </div>
                         @empty
                             <p>コメントはありません。</p>
