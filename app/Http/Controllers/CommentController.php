@@ -19,4 +19,12 @@ class CommentController extends Controller
 
         return redirect()->route('report.show', $report)->with('commentMessage', 'コメント投稿しました。');
     }
+
+    public function destroy(Comment $comment)
+    {
+        $report = $comment->report_id;
+        $comment->delete();
+
+        return redirect()->route('report.show', $report)->with('deleteMessage', 'コメントを削除しました。');
+    }
 }
