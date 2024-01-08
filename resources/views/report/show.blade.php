@@ -93,7 +93,7 @@
                                 <h3 class="mb-2 font-bold">投稿者: {{ $comment->user->name }}</h3>
                                 <hr>
                                 <p class="text-gray-700 mt-2">{{ $comment->body }}</p>
-                                <p class="text-right">2024/01/10</p>
+                                <p class="text-right">{{ $comment->created_at }}</p>
                             </div>
                         @empty
                             <p>コメントはありません。</p>
