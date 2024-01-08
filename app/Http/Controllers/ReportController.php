@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReportStoreRequest;
 use App\Http\Requests\ReportUpdateRequest;
-use App\Models\Comment;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +27,10 @@ class ReportController extends Controller
 
     public function show(Report $report)
     {
-        $comments = $report->comments()->with('user')->paginate(5);
+        $comments = $report->comments()
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
         return view('report.show', compact('report', 'comments'));
     }
 
