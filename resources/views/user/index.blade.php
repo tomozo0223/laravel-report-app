@@ -17,19 +17,20 @@
                     <table class="min-w-full border border-gray-600">
                         <thead>
                             <tr>
-                                <th class="py-2 px-4 bg-gray-200 border-b">ID</th>
-                                <th class="py-2 px-4 bg-gray-200 border-b">名前</th>
-                                <th class="py-2 px-4 bg-gray-200 border-b">メールアドレス</th>
-                                <th class="py-2 px-4 bg-gray-200 border-b">登録日</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">ID</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">名前</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">メールアドレス</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-center">登録日</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
                                 <tr class="hover:bg-gray-100">
-                                    <td class="py-2 px-4 border-b">{{ $user->id }}</td>
-                                    <td class="py-2 px-4 border-b"><a href="#">{{ $user->name }}</a></td>
-                                    <td class="py-2 px-4 border-b">{{ $user->email }}</td>
-                                    <td class="py-2 px-4 border-b">{{ $user->created_at }}</td>
+                                    <td class="py-2 px-4 border-b text-left">{{ $user->id }}</td>
+                                    <td class="py-2 px-4 border-b text-left"><a href="#">{{ $user->name }}</a>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-left">{{ $user->email }}</td>
+                                    <td class="py-2 px-4 border-b text-center">{{ $user->created_at }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
