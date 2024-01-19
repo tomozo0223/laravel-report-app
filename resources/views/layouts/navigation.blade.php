@@ -18,9 +18,9 @@
                     <x-nav-link :href="route('report.create')" :active="request()->routeIs('report.create')">
                         日報登録
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                         ユーザー一覧
-                    </x-nav-link> --}}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -87,9 +87,9 @@
             <x-responsive-nav-link :href="route('report.create')" :active="request()->routeIs('report.create')">
                 日報登録
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                 ユーザー一覧
-            </x-responsive-nav-link> --}}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
