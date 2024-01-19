@@ -31,16 +31,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/report', [ReportController::class, 'index'])->name('report.index');
-    Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
-    Route::get('/report/{report}', [ReportController::class, 'show'])->name('report.show');
-    Route::post('/report', [ReportController::class, 'store'])->name('report.store');
-    Route::get('/report/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
-    Route::put('/report/{report}', [ReportController::class, 'update'])->name('report.update');
-    Route::delete('/report/{report}', [ReportController::class, 'destroy'])->name('report.destroy');
-    Route::post('/comment/{report}', [CommentController::class, 'store'])->name('comment.store');
-    Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
-    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::prefix('report')
+        ->name('report.')
+        ->controller(ReportController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/{report}', 'show')->name('show');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{report}/edit', 'edit')->name('edit');
+            Route::put('/{report}', 'update')->name('update');
+            Route::delete('/{report}', 'destroy')->name('destroy');
+        });
+    Route::prefix('comment')
+        ->name('comment.')
+        ->controller(CommentController::class)
+        ->group(function () {
+            Route::post('/{report}', 'store')->name('store');
+            Route::delete('/{comment}',  'destroy')->name('destroy');
+        });
+    Route::prefix('user')
+        ->name('user.')
+        ->controller(UserController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+        });
 });
 
 require __DIR__ . '/auth.php';
