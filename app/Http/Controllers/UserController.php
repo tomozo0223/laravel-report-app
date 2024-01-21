@@ -10,6 +10,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at', 'asc')->paginate(10);
-        return view('user.index', compact('users'));
+        $enrollmentNumber = 1;
+
+        return view('user.index', compact('users', 'enrollmentNumber'));
     }
 }
