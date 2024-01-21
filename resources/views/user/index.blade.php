@@ -20,6 +20,7 @@
                                 <th class="py-2 px-4 bg-gray-200 border-b text-left">ID</th>
                                 <th class="py-2 px-4 bg-gray-200 border-b text-left">名前</th>
                                 <th class="py-2 px-4 bg-gray-200 border-b text-left">メールアドレス</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">雇用状態</th>
                                 <th class="py-2 px-4 bg-gray-200 border-b text-center">登録日</th>
                             </tr>
                         </thead>
@@ -30,6 +31,11 @@
                                     <td class="py-2 px-4 border-b text-left"><a href="#">{{ $user->name }}</a>
                                     </td>
                                     <td class="py-2 px-4 border-b text-left">{{ $user->email }}</td>
+                                    <td class="py-2 px-4 border-b text-left">
+                                        @if ($user->status === $enrollmentNumber)
+                                            在籍
+                                        @endif
+                                    </td>
                                     <td class="py-2 px-4 border-b text-center">{{ $user->created_at }}</td>
                                 </tr>
                             @endforeach
