@@ -32,7 +32,7 @@
                                     </td>
                                     <td class="py-2 px-4 border-b text-left">{{ $user->email }}</td>
                                     <td class="py-2 px-4 border-b text-left">
-                                        @if ($user->status === $enrollmentNumber)
+                                        @if ($user->isEnrollment())
                                             在籍
                                         @endif
                                     </td>
