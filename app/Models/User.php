@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'employmentStatus',
     ];
 
     /**
@@ -43,6 +44,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    const ENROLLMENT = 1;
+
     public function reports()
     {
         return $this->belongsToMany(Report::class);
@@ -51,5 +54,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function isEnrollment()
+    {
+        return $this->employmentStatus === self::ENROLLMENT;
     }
 }
