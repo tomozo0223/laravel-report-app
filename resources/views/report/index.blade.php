@@ -10,26 +10,38 @@
     </head>
 
     <body>
-        <div class="bg-gray-300 p-8">
-            <div class="w-3/5 m-auto mt-8">
-                <h1 class="text-2xl font-bold text-center mb-8">業務日報一覧</h1>
-                @if (session('message'))
-                    <p class="text-red-500 font-bold">{{ session('message') }}</p>
-                @endif
-                @foreach ($reports as $report)
-                    <div class="bg-white p-8 mb-4 rounded-md shadow-md">
-                        <div class="flex items-center">
-                            <h2 class="text-xl font-bold">
-                                <a href="{{ route('report.show', $report) }}">{{ $report->working_day }}</a>
-                            </h2>
-                            <h3 class="ml-2 font-bold text-xl ">{{ $report->site_name }}</h3>
-                            <div class="ml-auto">
-                                <p class="text-gray-500">作業責任者:{{ $report->user->name }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                {{ $reports->links() }}
+        <div class="bg-gray-300 h-screen">
+            <div class="w-screen m-auto mt-8">
+                <h1 class="text-2xl font-bold text-center mb-8">日報一覧</h1>
+                <div class="w-4/5 mx-auto p-8 bg-white border rounded-md shadow-md">
+                    @if (session('message'))
+                        <p class="text-red-500 font-bold">{{ session('message') }}
+                        </p>
+                    @endif
+                    <table class="w-4/5 m-auto border border-gray-600">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">ID</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">日付</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">現場名</th>
+                                <th class="py-2 px-4 bg-gray-200 border-b text-left">作業責任者</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($reports as $report)
+                                <tr class="hover:bg-gray-100">
+                                    <td class="py-2 px-4 border-b text-left">{{ $report->id }}</td>
+                                    <td class="py-2 px-4 border-b text-left"><a
+                                            href="{{ route('report.show', $report) }}"><strong>{{ $report->working_day }}</strong></a>
+                                    </td>
+                                    <td class="py-2 px-4 border-b text-left">{{ $report->site_name }}</td>
+                                    <td class="py-2 px-4 border-b text-left">{{ $report->user->name }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $reports->links() }}
+                </div>
             </div>
         </div>
     </body>
