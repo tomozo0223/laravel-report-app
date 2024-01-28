@@ -10,13 +10,13 @@
     </head>
 
     <body>
-        <div class="p-8">
-            <div class="w-3/5 m-auto mt-8">
+        <div class="bg-gray-300 h-screen">
+            <div class="w-screen m-auto mt-8">
                 <h1 class="text-2xl font-bold text-center mb-8">日報詳細</h1>
-                @if (session('message'))
-                    <p class="text-red-500 font-bold">{{ session('message') }}</p>
-                @endif
-                <div class="bg-white p-8 mb-4 rounded-md shadow-lg">
+                <div class="w-4/5 mx-auto p-8 bg-white border rounded-md shadow-md">
+                    @if (session('message'))
+                        <p class="text-red-500 font-bold">{{ session('message') }}</p>
+                    @endif
                     <div class="flex justify-between items-center mb-4 border-b pb-2">
                         <h2 class="text-xl font-bold">
                             {{ $report->site_name }}

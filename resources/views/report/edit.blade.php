@@ -10,10 +10,10 @@
     </head>
 
     <body>
-        <div class="bg-gray-300 p-8">
-            <div class="w-4/5 m-auto mt-8">
-                <h1 class="text-2xl font-bold text-center mb-8">業務日報登録</h1>
-                <div class="max-w-2xl mx-auto p-8 bg-white border rounded-md shadow-md">
+        <div class="bg-gray-300 h-screen">
+            <div class="w-screen m-auto mt-8">
+                <h1 class="text-2xl font-bold text-center mb-8">日報編集</h1>
+                <div class="w-4/5 mx-auto p-8 bg-white border rounded-md shadow-md">
                     <form action="{{ route('report.update', $report) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
