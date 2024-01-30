@@ -2,17 +2,17 @@
     <x-slot:header>
         <h1 class="inline border-b-4 border-blue-300 pb-2">日報詳細</h1>
     </x-slot:header>
-    <div class="w-4/5 m-auto border-2 border-blue-300 p-4">
+    <div class="max-w-screen-lg w-4/5 m-auto border-2 border-blue-300 p-4 rounded">
         @if (session('message'))
             <p class="text-red-500 font-bold">{{ session('message') }}</p>
         @endif
         <div class="flex justify-between items-center mb-4 border-b-4 border-blue-300 pb-2">
-            <h2 class="text-xl font-bold">
+            <h2 class="text-2xl font-bold">
                 {{ $report->site_name }}
             </h2>
             <div class="text-right">
-                <h3 class="font-bold">{{ $report->working_day }}</h3>
-                <p class="text-gray-500">作業責任者: {{ $report->user->name }}</p>
+                <h3 class="font-bold text-xl">{{ $report->working_day }}</h3>
+                <p class="text-gray-500 text-xl">作業責任者: {{ $report->user->name }}</p>
             </div>
         </div>
         <div class="mb-4">
@@ -24,7 +24,6 @@
                 <h4 class="text-lg font-bold mb-1">作業メンバー</h4>
                 <ul class="flex">
                     @foreach ($report->users as $user)
-                        <li>・{{ $user->name }}</li>
                         <li>・{{ $user->name }}</li>
                     @endforeach
                 </ul>
@@ -42,20 +41,21 @@
             <div class="mt-4 flex justify-end">
                 @if ($report->user->id === Auth::id())
                     <x-primary-button class="bg-blue-600">
-                        <a href="{{ route('report.edit', $report) }}">更新</a>
+                        <a href="{{ route('report.edit', $report) }}">編集</a>
                     </x-primary-button>
                     <form action="{{ route('report.destroy', $report) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <x-primary-button class="bg-green-600 ml-2">
+                        <x-primary-button class="bg-red-600 ml-2">
                             削除
                         </x-primary-button>
                     </form>
                 @endif
             </div>
         </div>
+
         <div class="w-full">
-            <h3 class="font-semibold">コメント投稿</h3>
+            <p class="font-semibold">コメント投稿</p>
             @if (session('commentMessage'))
                 <p class="text-red-500 font-bold">{{ session('commentMessage') }}</p>
             @endif
@@ -65,18 +65,18 @@
                     @error('body')
                         <p class="text-red-600">{{ $message }}</p>
                     @enderror
-                    <input type="text" name="body" id="body" class="w-full">
+                    <input type="text" name="body" id="body" class="w-full rounded">
                 </div>
                 <div class="mt-2 flex justify-end">
-                    <x-primary-button class="bg-blue-600">
+                    <x-primary-button class="bg-blue-600 px-4 text-xs">
                         投稿
                     </x-primary-button>
                 </div>
             </form>
         </div>
 
-        <div class="bg-white p-4 mb-4 rounded-md shadow-lg">
-            <h2 class="text-2xl font-bold mb-4">コメント一覧</h2>
+        <div class="bg-white p-4 mb-4 rounded shadow-lg">
+            <p class="font-semibold mb-4">コメント一覧</p>
             @if (session('deleteMessage'))
                 <p class="text-red-500 font-bold">{{ session('deleteMessage') }}</p>
             @endif
@@ -92,7 +92,7 @@
                         <form action="{{ route('comment.destroy', $comment) }}" method="POST" class="text-right">
                             @csrf
                             @method('DELETE')
-                            <x-primary-button class="bg-green-600">
+                            <x-primary-button class="bg-red-600 px-4 text-xs">
                                 削除
                             </x-primary-button>
                         </form>

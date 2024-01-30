@@ -2,7 +2,7 @@
     <x-slot:header>
         <h1 class="inline border-b-4 border-blue-300 pb-2">ユーザー一覧</h1>
     </x-slot:header>
-    <div class="w-4/5 m-auto">
+    <div class="m-auto w-4/5 max-w-screen-lg">
         <table class="w-full m-auto border border-gray-600">
             <thead>
                 <tr>
@@ -30,6 +30,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $users->links() }}
+        </div>
     </div>
-    {{ $users->links() }}
 </x-app-layout>

@@ -2,7 +2,7 @@
     <x-slot:header>
         <h1 class="inline border-b-4 border-blue-300 pb-2">日報更新</h1>
     </x-slot:header>
-    <div class="w-4/5 m-auto">
+    <div class="max-w-screen-lg m-auto w-4/5">
         <form action="{{ route('report.update', $report) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -62,8 +62,8 @@
                     placeholder="作業内容を記入してください">{{ old('body', $report->body) }}</textarea>
             </div>
             <div class="text-right mb-8">
-                <x-primary-button class="bg-blue-300">
-                    更新
+                <x-primary-button class="bg-blue-600">
+                    編集
                 </x-primary-button>
             </div>
         </form>
