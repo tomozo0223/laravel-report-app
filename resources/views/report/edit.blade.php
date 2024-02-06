@@ -63,7 +63,7 @@
             </div>
             <div class="text-right mb-8">
                 <x-primary-button class="bg-blue-600">
-                    編集
+                    更新
                 </x-primary-button>
             </div>
         </form>
