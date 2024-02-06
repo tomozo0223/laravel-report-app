@@ -18,14 +18,14 @@
             <tbody>
                 @foreach ($reports as $report)
                     <tr class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b text-left"><a
-                                href="{{ route('report.show', $report) }}"><strong>{{ $report->working_day }}</strong></a>
+                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
+                                class="block">{{ $report->working_day }}</a>
                         </td>
-                        <td class="py-2 px-4 border-b text-left"><a
-                                href="{{ route('report.show', $report) }}"><strong>{{ $report->site_name }}</strong></a>
+                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
+                                class="block">{{ $report->site_name }}</a>
                         </td>
-                        <td class="py-2 px-4 border-b text-left"><a
-                                href="{{ route('report.show', $report) }}"><strong>{{ $report->user->name }}</strong></a>
+                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
+                                class="block">{{ $report->user->name }}</a>
                         </td>
                     </tr>
                 @endforeach
