@@ -17,15 +17,16 @@
             </thead>
             <tbody>
                 @foreach ($reports as $report)
-                    <tr class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
-                                class="block">{{ $report->working_day }}</a>
+                    <tr class="hover:bg-gray-100 cursor-pointer"
+                        onclick="location.href='{{ route('report.show', $report) }}'">
+                        <td class="py-2 px-4 border-b text-left font-bold">
+                            {{ $report->working_day }}
                         </td>
-                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
-                                class="block">{{ $report->site_name }}</a>
+                        <td class="py-2 px-4 border-b text-left font-bold">
+                            {{ $report->site_name }}
                         </td>
-                        <td class="py-2 px-4 border-b text-left font-bold"><a href="{{ route('report.show', $report) }}"
-                                class="block">{{ $report->user->name }}</a>
+                        <td class="py-2 px-4 border-b text-left font-bold">
+                            {{ $report->user->name }}
                         </td>
                     </tr>
                 @endforeach

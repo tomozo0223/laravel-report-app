@@ -15,19 +15,17 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b text-left"><a href="#" class="block">{{ $user->id }}</a></td>
-                        <td class="py-2 px-4 border-b text-left"><a href="#" class="block">{{ $user->name }}</a>
+                    <tr class="hover:bg-gray-100 cursor-pointer" onclick="location.href='#'">
+                        <td class="py-2 px-4 border-b text-left">{{ $user->id }}</td>
+                        <td class="py-2 px-4 border-b text-left">{{ $user->name }}
                         </td>
-                        <td class="py-2 px-4 border-b text-left"><a href="#" class="block">{{ $user->email }}</a></td>
+                        <td class="py-2 px-4 border-b text-left">{{ $user->email }}</td>
                         <td class="py-2 px-4 border-b text-left">
-                            <a href="#" class="block">
-                                @if ($user->isEnrollment())
-                                    在籍
-                                @endif
-                            </a>
+                            @if ($user->isEnrollment())
+                                在籍
+                            @endif
                         </td>
-                        <td class="py-2 px-4 border-b text-center"><a href="#" class="block">{{ $user->created_at }}</a></td>
+                        <td class="py-2 px-4 border-b text-center">{{ $user->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>
