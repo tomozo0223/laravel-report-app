@@ -12,15 +12,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('report.index')" :active="request()->routeIs('report.index')">
-                        日報一覧
-                    </x-nav-link>
-                    <x-nav-link :href="route('report.create')" :active="request()->routeIs('report.create')">
-                        日報登録
-                    </x-nav-link>
-                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        ユーザー一覧
-                    </x-nav-link>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-list text-white"></i>
+                        <x-nav-link :href="route('report.index')" :active="request()->routeIs('report.index')">
+                            日報一覧
+                        </x-nav-link>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-pen text-white"></i>
+                        <x-nav-link :href="route('report.create')" :active="request()->routeIs('report.create')">
+                            日報登録
+                        </x-nav-link>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-regular fa-user text-white"></i>
+                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                            ユーザー一覧
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
 
