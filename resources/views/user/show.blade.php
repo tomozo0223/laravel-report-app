@@ -31,10 +31,14 @@
                 </tr>
             </tbody>
         </table>
-        <div class="mt-2 flex justify-end">
-            <x-primary-button class="bg-green-600">
-                編集
-            </x-primary-button>
-        </div>
+        @if ($user->id === Auth::id())
+            <div class="mt-2 flex justify-end">
+                <x-primary-button class="bg-green-600">
+                    <a href="{{ route('profile.edit') }}">
+                        編集
+                    </a>
+                </x-primary-button>
+            </div>
+        @endif
     </div>
 </x-app-layout>
