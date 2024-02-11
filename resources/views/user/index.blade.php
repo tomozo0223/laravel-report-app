@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot:header>
-        <h1 class="inline border-b-4 border-blue-600 pb-2">ユーザー一覧</h1>
+        <h1 class="inline border-b-4 border-blue-600 pb-2">社員一覧</h1>
     </x-slot:header>
     <div class="m-auto w-4/5 max-w-screen-lg">
         <table class="w-full m-auto border border-gray-600">
@@ -15,7 +15,8 @@
             </thead>
             <tbody>
                 @foreach ($users as $index => $user)
-                    <tr class="hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}" onclick="location.href='#'">
+                    <tr class="hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}"
+                        onclick="location.href='{{ route('user.show', $user) }}'">
                         <td class="py-2 px-4 border-b text-left">{{ $user->id }}</td>
                         <td class="py-2 px-4 border-b text-left">{{ $user->name }}
                         </td>
@@ -25,7 +26,7 @@
                                 在籍
                             @endif
                         </td>
-                        <td class="py-2 px-4 border-b text-center">{{ $user->created_at }}</td>
+                        <td class="py-2 px-4 border-b text-center">{{ $user->created_at->format('Y年m月d日') }}</td>
                     </tr>
                 @endforeach
             </tbody>
