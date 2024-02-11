@@ -76,7 +76,7 @@
         </div>
 
         <div class="bg-white p-4 mb-4 rounded shadow-lg">
-            <p class="font-semibold mb-4">コメント一覧</p>
+            <p class="font-semibold mb-4">コメント一覧<i class="fa-regular fa-comment ml-1"></i></p>
             @if (session('deleteMessage'))
                 <p class="text-red-500 font-bold">{{ session('deleteMessage') }}</p>
             @endif
