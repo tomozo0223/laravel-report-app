@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         ->controller(UserController::class)
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/{user}', 'show')->name('show');
         });
 });
 
