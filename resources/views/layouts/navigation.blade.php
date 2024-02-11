@@ -27,7 +27,7 @@
                     <div class="flex items-center">
                         <i class="fa-regular fa-user text-white"></i>
                         <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                            ユーザー一覧
+                            社員一覧
                         </x-nav-link>
                     </div>
                 </div>
