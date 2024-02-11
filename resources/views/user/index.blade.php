@@ -14,8 +14,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
-                    <tr class="hover:bg-gray-100 cursor-pointer" onclick="location.href='#'">
+                @foreach ($users as $index => $user)
+                    <tr class="hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}" onclick="location.href='#'">
                         <td class="py-2 px-4 border-b text-left">{{ $user->id }}</td>
                         <td class="py-2 px-4 border-b text-left">{{ $user->name }}
                         </td>
