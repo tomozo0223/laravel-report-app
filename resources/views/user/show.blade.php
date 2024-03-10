@@ -5,19 +5,19 @@
     <div class="m-auto w-4/5 max-w-screen-lg">
         <table class="w-full m-auto border border-gray-600">
             <tbody>
-                <tr class="md:text-base text-sm">
+                <tr class="md:text-base text-xs">
                     <th class="bg-blue-200 py-2 px-4 border border-gray-600">社員番号</th>
                     <td class="py-2 px-4 border border-gray-600">{{ $user->id }}</td>
                 </tr>
-                <tr class="md:text-base text-sm">
+                <tr class="md:text-base text-xs">
                     <th class="bg-blue-200 py-2 px-4 border border-gray-600">名前</th>
                     <td class="py-2 px-4 border border-gray-600">{{ $user->name }}</td>
                 </tr>
-                <tr class="md:text-base text-sm">
+                <tr class="md:text-base text-xs">
                     <th class="bg-blue-200 py-2 px-4 border border-gray-600">メールアドレス</th>
                     <td class="py-2 px-4 border border-gray-600">{{ $user->email }}</td>
                 </tr>
-                <tr class="md:text-base text-sm">
+                <tr class="md:text-base text-xs">
                     <th class="bg-blue-200 py-2 px-4 border border-gray-600">雇用情報</th>
                     <td class="py-2 px-4 border border-gray-600">
                         @if ($user->isEnrollment())
