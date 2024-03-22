@@ -3,6 +3,12 @@
         <h1 class="inline border-b-4 border-blue-600 pb-2">日報一覧</h1>
     </x-slot:header>
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
+        <div class="mb-4">
+            <form action="{{ route('report.index') }}">
+                <input type="date" name="report_date">
+                <x-primary-button>検索</x-primary-button>
+            </form>
+        </div>
         @if (session('message'))
             <p class="text-red-500 font-bold">{{ session('message') }}
             </p>
