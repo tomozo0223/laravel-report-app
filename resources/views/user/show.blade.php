@@ -2,7 +2,7 @@
     <x-slot:header>
         <h1 class="inline border-b-4 border-blue-300 pb-2">社員詳細</h1>
     </x-slot:header>
-    <div class="m-auto w-4/5 max-w-screen-lg">
+    <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
         <table class="w-full m-auto border border-gray-600">
             <tbody>
                 <tr class="md:text-base text-xs">
