@@ -43,14 +43,9 @@ class Report extends Model
         })->when($keyword, function (Builder $query, $keyword) {
             $query->where('site_name', 'LIKE', "%$keyword%");
         })->with('user')
-            ->paginate(5)
-            ->appends(['report_date' => $reportDate, "site_name" => $keyword]);
-
-        if ($reports->isEmpty()) {
-            $reports = Report::orderByRaw('working_day desc, site_name asc, user_id asc')
-                ->with('user')
-                ->paginate(10);
-        }
+            ->orderByRaw('working_day desc, site_name asc, user_id asc')
+            ->paginate(10)
+            ->appends(['report_date' => $reportDate, "keyword" => $keyword]);
 
         return $reports;
     }
