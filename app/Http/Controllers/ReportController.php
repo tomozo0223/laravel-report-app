@@ -14,16 +14,11 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->report_date || $request->keyword) {
-            $reportDate = $request->input('report_date');
-            $keyword = $request->input('keyword');
-            $reports = new Report();
-            $reports = $reports->searchReport($reportDate, $keyword);
-        } else {
-            $reports = Report::orderByRaw('working_day desc, site_name asc, user_id asc')
-                ->with('user')
-                ->paginate(10);
-        }
+        $reportDate = $request->input('report_date');
+        $keyword = $request->input('keyword');
+        $reports = new Report();
+        $reports = $reports->searchReport($reportDate,  $keyword);
+
         return  view('report.index', compact('reports'));
     }
 
