@@ -6,16 +6,19 @@ use App\Http\Requests\ReportStoreRequest;
 use App\Http\Requests\ReportUpdateRequest;
 use App\Models\Report;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reports = Report::orderByRaw('working_day desc, site_name asc, user_id asc')
-            ->with('user')
-            ->paginate(10);
+        $reportDate = $request->input('report_date');
+        $keyword = $request->input('keyword');
+        $reports = new Report();
+        $reports = $reports->searchReport($reportDate,  $keyword);
+
         return  view('report.index', compact('reports'));
     }
 
