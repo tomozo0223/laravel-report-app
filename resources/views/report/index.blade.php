@@ -5,10 +5,14 @@
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
         <div class="mb-4">
             <form action="{{ route('report.index') }}">
-                <div class="flex">
+                <div class="flex items-center">
                     <input class="mr-1" type="text" name="keyword" placeholder="現場名"
                         value="{{ Request::query('keyword') }}">
-                    <input class="w-36" type="date" name="report_date" value="{{ Request::query('report_date') }}">
+                    <label for="report_date" class="block text-gray-700 text-sm font-bold mr-1">
+                        日付:
+                    </label>
+                    <input class="w-36" type="date" name="report_date" value="{{ Request::query('report_date') }}"
+                        id="report_date">
                 </div>
                 <x-primary-button class="mt-2">検索</x-primary-button>
                 <x-primary-button class="bg-green-500 mt-2"><a
