@@ -5,18 +5,23 @@
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
         <div class="mb-4">
             <form action="{{ route('report.index') }}">
-                <div class="flex items-center">
-                    <input class="mr-1" type="text" name="keyword" placeholder="現場名"
-                        value="{{ Request::query('keyword') }}">
+                <div class="md:flex md:items-center">
+                    <label for="site_name" class="block text-gray-700 text-sm font-bold mr-1">
+                        現場名:
+                    </label>
+                    <input class="md:mr-1 w-full md:w-auto mb-2 md:mb-0" type="text" name="keyword" placeholder="現場名"
+                        value="{{ Request::query('keyword') }}" id="site_name">
                     <label for="report_date" class="block text-gray-700 text-sm font-bold mr-1">
                         日付:
                     </label>
-                    <input class="w-36" type="date" name="report_date" value="{{ Request::query('report_date') }}"
-                        id="report_date">
+                    <input class="md:mr-1 w-full md:w-auto mb-2 md:mb-0" type="date" name="report_date"
+                        value="{{ Request::query('report_date') }}" id="report_date">
+                    <div class="flex justify-end">
+                        <x-primary-button>検索</x-primary-button>
+                        <x-primary-button class="bg-green-500 ml-1"><a
+                                href="{{ route('report.index') }}">クリア</a></x-primary-button>
+                    </div>
                 </div>
-                <x-primary-button class="mt-2">検索</x-primary-button>
-                <x-primary-button class="bg-green-500 mt-2"><a
-                        href="{{ route('report.index') }}">クリア</a></x-primary-button>
             </form>
         </div>
         @if (session('message'))
