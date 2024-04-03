@@ -39,10 +39,12 @@
                 <p class="md:text-base text-xs">{!! nl2br($report->body) !!}</p>
             </div>
             <div class="mt-4 flex justify-end">
-                @if ($report->user->id === Auth::id())
+                @can('update', $report)
                     <x-primary-button class="bg-green-600 md:px-4 px-2">
                         <a href="{{ route('report.edit', $report) }}">編集</a>
                     </x-primary-button>
+                @endcan
+                @can('delete', $report)
                     <form action="{{ route('report.destroy', $report) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -50,7 +52,7 @@
                             削除
                         </x-primary-button>
                     </form>
-                @endif
+                @endcan
             </div>
         </div>
 
