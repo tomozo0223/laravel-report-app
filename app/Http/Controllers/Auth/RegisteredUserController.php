@@ -20,9 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $adminExists = User::where('role_id', 1)->exists();
-
-        return view('auth.register', ['adminExists' => $adminExists]);
+        return view('auth.register');
     }
 
     /**
@@ -36,7 +34,6 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role_id' => ['required', 'integer'],
         ]);
 
         $user = User::create([
@@ -44,7 +41,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'employmentStatus' => 1,
-            'role_id' => $request->role_id,
+            'role' => 1,
         ]);
 
         event(new Registered($user));
