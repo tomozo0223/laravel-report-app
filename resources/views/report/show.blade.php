@@ -90,7 +90,7 @@
                     </div>
                     <hr>
                     <p class="text-gray-700 mt-2 md:text-base text-xs">{{ $comment->body }}</p>
-                    @if (Auth::id() === $comment->user->id)
+                    @can('delete', $comment)
                         <form action="{{ route('comment.destroy', $comment) }}" method="POST" class="text-right">
                             @csrf
                             @method('DELETE')
@@ -98,7 +98,8 @@
                                 削除
                             </x-primary-button>
                         </form>
-                    @endif
+                    @endcan
+
                 </div>
             @empty
                 <p>コメントはありません。</p>
