@@ -18,20 +18,6 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- role -->
-        <div class="mt-4">
-            <x-input-label for="role_id" value="役割" />
-            <select name="role_id"
-                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                @if ($adminExists)
-                    <option value="0" selected>一般ユーザー</option>
-                @else
-                    <option value="0">一般ユーザー</option>
-                    <option value="1">管理者</option>
-                @endif
-            </select>
-        </div>
-
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
