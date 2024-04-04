@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Consts\UserConst;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -15,8 +16,6 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    const EMPLOYMENTSTATUS_DEFAULT_NUM = 1;
-    const ROLE_DEFAULT_NUM = 1;
 
     /**
      * Display the registration view.
@@ -43,8 +42,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'employmentStatus' => EMPLOYMENTSTATUS_DEFAULT_NUM,
-            'role' => ROLE_DEFAULT_NUM,
+            'employmentStatus' => UserConst::EMPLOYMENTSTATUS_DEFAULT_NUM,
+            'role' => UserConst::ROLE_DEFAULT_NUM,
         ]);
 
         event(new Registered($user));

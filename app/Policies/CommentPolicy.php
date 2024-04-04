@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Consts\UserConst;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
@@ -13,6 +14,6 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->id === $comment->user->id  || $user->role === 0;
+        return $user->id === $comment->user->id  || $user->role === UserConst::ROLE_ADMIN_NUM;
     }
 }
