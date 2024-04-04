@@ -15,6 +15,9 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    const EMPLOYMENTSTATUS_DEFAULT_NUM = 1;
+    const ROLE_DEFAULT_NUM = 1;
+
     /**
      * Display the registration view.
      */
@@ -40,8 +43,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'employmentStatus' => 1,
-            'role' => 1,
+            'employmentStatus' => EMPLOYMENTSTATUS_DEFAULT_NUM,
+            'role' => ROLE_DEFAULT_NUM,
         ]);
 
         event(new Registered($user));
