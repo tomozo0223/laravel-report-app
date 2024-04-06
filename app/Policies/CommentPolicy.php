@@ -14,6 +14,6 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->id === $comment->user->id  || $user->role === UserConst::ROLE_ADMIN_NUM;
+        return $user->id === $comment->user->id  || $user->role === UserConst::ROLE_ADMIN;
     }
 }

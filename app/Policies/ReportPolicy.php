@@ -14,7 +14,7 @@ class ReportPolicy
      */
     public function update(User $user, Report $report): bool
     {
-        return $report->user->id === $user->id || $user->role === UserConst::ROLE_ADMIN_NUM;
+        return $report->user->id === $user->id || $user->role === UserConst::ROLE_ADMIN;
     }
 
     /**
@@ -22,6 +22,6 @@ class ReportPolicy
      */
     public function delete(User $user, Report $report): bool
     {
-        return $report->user->id === $user->id || $user->role === UserConst::ROLE_ADMIN_NUM;
+        return $report->user->id === $user->id || $user->role === UserConst::ROLE_ADMIN;
     }
 }
