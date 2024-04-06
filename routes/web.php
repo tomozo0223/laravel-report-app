@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
@@ -56,6 +57,13 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/{user}', 'show')->name('show');
+        });
+    Route::prefix('admin')
+        ->name('admin.')
+        ->controller(AdminUserController::class)
+        ->group(function () {
+            Route::get('/{user}/edit', 'edit')->name('edit');
+            Route::patch('/{user}', 'update')->name('update');
         });
 });
 
