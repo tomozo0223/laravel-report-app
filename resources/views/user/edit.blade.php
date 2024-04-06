@@ -18,11 +18,17 @@
                             <td class="py-2 px-4 border border-gray-600"><input type="text" name="name"
                                     value="{{ $user->name }}"></td>
                         </tr>
+                        @error('name')
+                            <p class="text-red-600">{{ $message }}</p>
+                        @enderror
                         <tr class="md:text-base text-xs">
                             <th class="bg-blue-200 py-2 px-4 border border-gray-600">メールアドレス</th>
                             <td class="py-2 px-4 border border-gray-600"><input type="email" name="email"
                                     value="{{ $user->email }}"></td>
                         </tr>
+                        @error('email')
+                            <p class="text-red-600">{{ $message }}</p>
+                        @enderror
                         <tr class="md:text-base text-xs">
                             <th class="bg-blue-200 py-2 px-4 border border-gray-600">雇用情報</th>
                             <td class="py-2 px-4 border border-gray-600">
@@ -32,6 +38,9 @@
                                 </select>
                             </td>
                         </tr>
+                        @error('employmentStatus')
+                            <p class="text-red-600">{{ $message }}</p>
+                        @enderror
                         <tr class="md:text-base text-sm">
                             <th class="bg-blue-200 py-2 px-4 border border-gray-600">登録日</th>
                             <td class="py-2 px-4 border border-gray-600">{{ $user->created_at->format('Y年m月d日') }}</td>
