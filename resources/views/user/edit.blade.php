@@ -4,7 +4,7 @@
     </x-slot:header>
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
         @can('update', $user)
-            <form action="{{ route('admin.update', $user) }}" method="POST">
+            <form action="{{ route('user.update', $user) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <table class="w-full m-auto border border-gray-600">
