@@ -22,6 +22,8 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        $this->authorize($comment);
+
         $report = $comment->report_id;
         $comment->delete();
 

@@ -64,6 +64,8 @@ class ReportController extends Controller
 
     public function edit(Report $report)
     {
+        $this->authorize($report);
+
         $users = User::all();
         $reportUserId = [];
         foreach ($report->users as $user) {
@@ -74,6 +76,8 @@ class ReportController extends Controller
 
     public function update(ReportUpdateRequest $request, Report $report)
     {
+        $this->authorize($report);
+
         $path = '';
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($report->image_path);
