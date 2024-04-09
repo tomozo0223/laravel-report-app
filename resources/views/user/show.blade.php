@@ -39,7 +39,7 @@
         <div class="mt-2 flex justify-end">
             @can('update', $user)
                 <x-primary-button class="bg-green-600">
-                    <a href="{{ route('admin.edit', $user) }}">
+                    <a href="{{ route('user.edit', $user) }}">
                         編集
                     </a>
                 </x-primary-button>
