@@ -15,12 +15,4 @@ class UserPolicy
     {
         return $user->role !== $model->role && $user->role === UserConst::ROLE_ADMIN;
     }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, User $model)
-    {
-        //
-    }
 }
