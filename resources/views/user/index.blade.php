@@ -25,6 +25,8 @@
                         <td class="py-2 px-4 border-b text-left">
                             @if ($user->isEnrollment())
                                 在籍
+                            @else
+                                退職
                             @endif
                         </td>
                         <td class="py-2 px-4 border-b text-center">{{ $user->created_at->format('Y年m月d日') }}</td>
