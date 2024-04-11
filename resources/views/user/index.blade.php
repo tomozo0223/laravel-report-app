@@ -9,6 +9,7 @@
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">ID</th>
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">名前</th>
                     <th class="hidden md:table-cell py-2 px-4 bg-blue-600 border-b text-white text-left">メールアドレス</th>
+                    <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">役割</th>
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">雇用状態</th>
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-center">登録日</th>
                 </tr>
@@ -20,9 +21,12 @@
                         <td class="py-2 px-4 border-b text-left">{{ $user->id }}</td>
                         <td class="py-2 px-4 border-b text-left">{{ $user->name }}</td>
                         <td class="hidden md:table-cell py-2 px-4 border-b text-left">{{ $user->email }}</td>
+                        <td class="py-2 px-4 border-b text-left">{{ $user->role === 1 ? '一般' : '管理者' }}</td>
                         <td class="py-2 px-4 border-b text-left">
                             @if ($user->isEnrollment())
                                 在籍
+                            @else
+                                退職
                             @endif
                         </td>
                         <td class="py-2 px-4 border-b text-center">{{ $user->created_at->format('Y年m月d日') }}</td>

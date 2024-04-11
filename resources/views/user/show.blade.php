@@ -3,6 +3,9 @@
         <h1 class="inline border-b-4 border-blue-300 pb-2">社員詳細</h1>
     </x-slot:header>
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto">
+        @if (session('message'))
+            <p class="text-red-500 font-bold">{{ session('message') }}</p>
+        @endif
         <table class="w-full m-auto border border-gray-600">
             <tbody>
                 <tr class="md:text-base text-xs">
@@ -22,6 +25,8 @@
                     <td class="py-2 px-4 border border-gray-600">
                         @if ($user->isEnrollment())
                             在籍
+                        @else
+                            退職
                         @endif
                     </td>
                 </tr>
@@ -31,14 +36,14 @@
                 </tr>
             </tbody>
         </table>
-        @if ($user->id === Auth::id())
-            <div class="mt-2 flex justify-end">
+        <div class="mt-2 flex justify-end">
+            @can('update', $user)
                 <x-primary-button class="bg-green-600">
-                    <a href="{{ route('profile.edit') }}">
+                    <a href="{{ route('user.edit', $user) }}">
                         編集
                     </a>
                 </x-primary-button>
-            </div>
-        @endif
+            @endcan
+        </div>
     </div>
 </x-app-layout>
