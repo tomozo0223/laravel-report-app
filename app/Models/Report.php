@@ -36,6 +36,11 @@ class Report extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
+    }
+
     public function searchReport(?string $reportDate, ?string $keyword): LengthAwarePaginator
     {
         $reports = Report::when($reportDate, function (Builder $query, $reportDate) {
