@@ -8,7 +8,7 @@
         @endif
         <div class="flex justify-between items-center mb-4 border-b-4 border-blue-300 pb-2">
             <h2 class="md:text-2xl text-base font-bold">
-                {{ $report->site_name }}
+                {{ $report->site->name }}
             </h2>
             <div class="text-right">
                 <h3 class="text-gray-500 md:text-base text-xs">{{ $report->working_day }}</h3>
