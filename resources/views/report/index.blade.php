@@ -34,6 +34,7 @@
                 <tr class="text-sm md:text-base">
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">日付</th>
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">現場名</th>
+                    <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">住所</th>
                     <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">作業責任者</th>
                 </tr>
             </thead>
@@ -45,7 +46,10 @@
                             {{ $report->working_day }}
                         </td>
                         <td class="py-2 px-4 border-b text-left font-bold">
-                            {{ $report->site_name }}
+                            {{ $report->site->name }}
+                        </td>
+                        <td class="py-2 px-4 border-b text-left font-bold">
+                            {{ $report->site->address }}
                         </td>
                         <td class="py-2 px-4 border-b text-left font-bold">
                             {{ $report->user->name }}
