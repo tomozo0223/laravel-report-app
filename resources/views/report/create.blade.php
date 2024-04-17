@@ -6,12 +6,15 @@
         <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
-                <label for="site_name" class="block text-sm font-semibold text-gray-600">現場名:</label>
-                @error('site_name')
+                <label for="site_id" class="block text-sm font-semibold text-gray-600">現場名:</label>
+                @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
-                    value="{{ old('site_name') }}">
+                <select name="site_id" id="site_id">
+                    @foreach ($sites as $site)
+                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-4">
                 <label for="working_day" class="block text-sm font-semibold text-gray-600">作業日:</label>
