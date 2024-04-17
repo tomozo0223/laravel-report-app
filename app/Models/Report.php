@@ -12,7 +12,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = [
-        'site_name',
+        'site_id',
         'user_id',
         'image_path',
         'body',
@@ -46,7 +46,7 @@ class Report extends Model
         $reports = Report::when($reportDate, function (Builder $query, $reportDate) {
             $query->where('working_day', $reportDate);
         })->when($keyword, function (Builder $query, $keyword) {
-            $query->whereHas('sites', function (Builder $query) use ($keyword) {
+            $query->whereHas('site', function (Builder $query) use ($keyword) {
                 $query->where('name', 'LIKE', "%$keyword%");
             });
         })->with('user', 'site')
