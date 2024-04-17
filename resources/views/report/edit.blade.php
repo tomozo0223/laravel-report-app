@@ -8,11 +8,16 @@
             @method('PUT')
             <div class="mb-4">
                 <label for="site_name" class="block text-sm font-semibold text-gray-600">現場名:</label>
-                @error('site_name')
+                @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
-                    value="{{ old('site_name', $report->site_name) }}">
+                <select name="site_id" id="site_id">
+                    @foreach ($sites as $site)
+                        <option value="{{ $site->id }}" {{ $report->site->id === $site->id ? 'selected' : '' }}>
+                            {{ $site->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-4">
                 <label for="working_day" class="block text-sm font-semibold text-gray-600">作業日:</label>
