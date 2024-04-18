@@ -49,7 +49,7 @@
                             {{ $report->site->name }}
                         </td>
                         <td class="py-2 px-4 border-b text-left font-bold">
-                            {{ $report->site->address }}
+                            {{ Str::limit($report->site->address, 10, '...') }}
                         </td>
                         <td class="py-2 px-4 border-b text-left font-bold">
                             {{ $report->user->name }}
