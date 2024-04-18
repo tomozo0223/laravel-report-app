@@ -7,7 +7,7 @@
             @csrf
             @method('PUT')
             <div class="mb-4">
-                <label for="site_name" class="block text-sm font-semibold text-gray-600">現場名:</label>
+                <label for="site_name" class="block text-sm font-semibold text-gray-600">現場:</label>
                 @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror

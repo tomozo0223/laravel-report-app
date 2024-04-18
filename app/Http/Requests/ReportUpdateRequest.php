@@ -36,7 +36,7 @@ class ReportUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'site_id' => '現場名',
+            'site_id' => '現場',
             'body' => '業務内容',
             'working_day' => '作業日',
             'start_time' => '開始時間',

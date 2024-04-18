@@ -6,7 +6,7 @@
         <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
-                <label for="site_id" class="block text-sm font-semibold text-gray-600">現場名:</label>
+                <label for="site_id" class="block text-sm font-semibold text-gray-600">現場:</label>
                 @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
