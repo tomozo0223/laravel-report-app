@@ -16,6 +16,7 @@
             </div>
         </div>
         <div class="mb-4">
+            <p class="md:text-base text-xs font-bold mb-2">住所:{{ $report->site->address }}</p>
             <div class="flex justify-start mb-2">
                 <p class="md:text-base text-xs">開始時間: {{ $report->start_time }}</p>
                 <p class="ml-4 md:text-base text-xs">終了時間: {{ $report->end_time }}</p>
