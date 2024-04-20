@@ -28,26 +28,30 @@
             <p class="text-red-500 font-bold">{{ session('message') }}
             </p>
         @endif
-        <table class="w-full
-                    m-auto border border-gray-600 bg-white">
+        <table class="w-full m-auto border border-gray-600 bg-white">
             <thead>
                 <tr class="text-sm md:text-base">
-                    <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">日付</th>
-                    <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">現場名</th>
-                    <th class="py-2 px-4 bg-blue-600 border-b text-white text-left">作業責任者</th>
+                    <th class="p-2 md:py-2 md:px-4 bg-blue-600 border-b text-white text-left">日付</th>
+                    <th class="p-2 md:py-2 md:px-4 bg-blue-600 border-b text-white text-left">現場名</th>
+                    <th class="p-2 md:py-2 md:px-4 bg-blue-600 border-b text-white text-left">住所</th>
+                    <th class="p-2 md:py-2 md:px-4 bg-blue-600 border-b text-white text-left">作業責任者</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($reports as $index => $report)
                     <tr class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}"
                         onclick="location.href='{{ route('report.show', $report) }}'">
-                        <td class="py-2 px-4 border-b text-left font-bold">
+                        <td class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $report->working_day }}
                         </td>
-                        <td class="py-2 px-4 border-b text-left font-bold">
-                            {{ $report->site_name }}
+                        <td class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold">
+                            {{ $report->site->name }}
                         </td>
-                        <td class="py-2 px-4 border-b text-left font-bold">
+                        <td
+                            class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold max-w-0 overflow-hidden text-ellipsis whitespace-nowrap	">
+                            {{ $report->site->address }}
+                        </td>
+                        <td class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $report->user->name }}
                         </td>
                     </tr>

@@ -22,7 +22,7 @@ class ReportStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'site_name' => ['required', 'string', 'max:20'],
+            'site_id' => ['required', 'integer'],
             'image_path' => ['nullable', 'string', 'max:100'],
             'body' => ['required', 'max:500'],
             'user_id' => ['nullable', 'array'],
@@ -36,7 +36,7 @@ class ReportStoreRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'site_name' => '現場名',
+            'site_id' => '現場',
             'body' => '業務内容',
             'working_day' => '作業日',
             'start_time' => '開始時間',

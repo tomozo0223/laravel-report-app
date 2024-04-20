@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Site;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,7 @@ class ReportFactory extends Factory
     public function definition(): array
     {
         return [
-            'site_name' => fake()->word(),
+            'site_id' => Site::first()->id,
             'user_id' => User::factory()->create()->id,
             'image_path' => '',
             'body' => fake()->realText(50),

@@ -12,7 +12,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = [
-        'site_name',
+        'site_id',
         'user_id',
         'image_path',
         'body',
@@ -36,14 +36,21 @@ class Report extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
+    }
+
     public function searchReport(?string $reportDate, ?string $keyword): LengthAwarePaginator
     {
         $reports = Report::when($reportDate, function (Builder $query, $reportDate) {
             $query->where('working_day', $reportDate);
         })->when($keyword, function (Builder $query, $keyword) {
-            $query->where('site_name', 'LIKE', "%$keyword%");
-        })->with('user')
-            ->orderByRaw('working_day desc, site_name asc, user_id asc')
+            $query->whereHas('site', function (Builder $query) use ($keyword) {
+                $query->where('name', 'LIKE', "%$keyword%");
+            });
+        })->with('user', 'site')
+            ->orderBy('working_day', 'desc', 'site.name', 'asc', 'user_id', 'asc')
             ->paginate(10)
             ->appends(['report_date' => $reportDate, "keyword" => $keyword]);
 

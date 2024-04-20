@@ -42,8 +42,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'employmentStatus' => UserConst::EMPLOYMENTSTATUS_DEFAULT_NUM,
-            'role' => UserConst::ROLE_DEFAULT_NUM,
+            'employmentStatus' => UserConst::EMPLOYMENTSTATUS_EMPLOYED,
+            'role' => UserConst::ROLE_NORMAL,
         ]);
 
         event(new Registered($user));

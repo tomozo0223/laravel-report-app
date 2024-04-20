@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReportStoreRequest;
 use App\Http\Requests\ReportUpdateRequest;
 use App\Models\Report;
+use App\Models\Site;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,8 @@ class ReportController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('report.create', compact('users'));
+        $sites = Site::all();
+        return view('report.create', compact('users', 'sites'));
     }
 
     public function show(Report $report)
@@ -46,7 +48,7 @@ class ReportController extends Controller
 
         DB::transaction(function () use ($request, $path) {
             $report = Report::create([
-                'site_name' => $request->input('site_name'),
+                'site_id' => $request->input('site_id'),
                 'user_id' => auth()->id(),
                 'image_path' => $request->image ? $path : '',
                 'body' => $request->input('body'),
@@ -67,11 +69,13 @@ class ReportController extends Controller
         $this->authorize($report);
 
         $users = User::all();
+        $sites = Site::all();
+
         $reportUserId = [];
         foreach ($report->users as $user) {
             $reportUserId[] = $user->id;
         }
-        return view('report.edit', compact('report', 'users', 'reportUserId'));
+        return view('report.edit', compact('report', 'users', 'sites', 'reportUserId'));
     }
 
     public function update(ReportUpdateRequest $request, Report $report)
@@ -84,7 +88,7 @@ class ReportController extends Controller
             $path = $request->file('image')->store('images', 'public');
         }
         DB::transaction(function () use ($request, $report, $path) {
-            $report->site_name = $request->input('site_name');
+            $report->site_id = $request->input('site_id');
             $report->body = $request->input('body');
             $report->image_path = $request->image ? $path : $report->image_path;
             $report->working_day = $request->input('working_day');
