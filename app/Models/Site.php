@@ -15,8 +15,8 @@ class Site extends Model
         return $this->hasMany(Reports::class);
     }
 
-    public function schedule()
+    public function schedules()
     {
-        return $this->belongsTo(Schedule::class);
+        return $this->hasMany(Schedule::class);
     }
 }

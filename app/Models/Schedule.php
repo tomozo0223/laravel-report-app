@@ -15,9 +15,9 @@ class Schedule extends Model
         'working_day',
     ];
 
-    public function sites()
+    public function site()
     {
-        return $this->hasMany(Site::class);
+        return $this->belongsTo(Site::class);
     }
 
     public function users()
