@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function schedules()
+    {
+        return $this->belongsToMany(Schedule::class);
+    }
+
     public function isEnrollment()
     {
         return $this->employmentStatus === self::ENROLLMENT;

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             SiteSeeder::class,
             ReportSeeder::class,
             CommentSeeder::class,
+            ScheduleSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
