@@ -3,6 +3,9 @@
         <h1 class="inline border-b-4 border-blue-300 pb-2">予定一覧</h1>
     </x-slot:header>
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto p-4 rounded">
+        @if (session('message'))
+            <p class="text-red-600">{{ session('message') }}</p>
+        @endif
         <table class="w-full m-auto border border-gray-600 bg-white">
             <thead>
                 <tr class="text-sm md:text-base">
