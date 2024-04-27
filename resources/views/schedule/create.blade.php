@@ -8,10 +8,16 @@
             <div class="mb-4">
                 <label for="site_name" class="block text-sm font-semibold text-gray-600">現場:</label>
                 <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md">
+                @error('site_name')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="address" class="block text-sm font-semibold text-gray-600">住所:</label>
                 <input type="text" name="address" id="address" class="w-full p-2 border rounded-md">
+                @error('address')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
@@ -24,15 +30,24 @@
                         </label>
                     @endforeach
                 </div>
+                @error('member_id')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="working_day" class="block text-sm font-semibold text-gray-600">作業予定日:</label>
                 <input type="date" name="working_day" id="working_day" class="w-full p-2 border rounded-md">
+                @error('working_day')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-4">
                 <label for="work_details" class="block text-sm font-semibold text-gray-600">作業内容:</label>
                 <textarea name="work_details" id="work_details" cols="30" rows="10" class="w-full p-2 border rounded-md"
                     placeholder="作業内容を記入してください"></textarea>
+                @error('work_details')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="text-right">
                 <x-primary-button class="bg-blue-500">
