@@ -256,4 +256,10 @@ return [
         'employmentStatus' => '雇用状況',
     ],
 
+    'values' => [
+        'working_day' => [
+            'today' => '当日',
+        ],
+    ]
+
 ];

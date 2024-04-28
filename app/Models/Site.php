@@ -10,6 +10,11 @@ class Site extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'address'
+    ];
+
     public function reports()
     {
         return $this->hasMany(Reports::class);

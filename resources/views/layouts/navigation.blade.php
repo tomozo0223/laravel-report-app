@@ -36,6 +36,12 @@
                             予定表
                         </x-nav-link>
                     </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-pen-to-square text-white"></i>
+                        <x-nav-link :href="route('schedule.create')" :active="request()->routeIs('schedule.create')">
+                            予定登録
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
 
@@ -107,6 +113,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
                 予定表
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.create')">
+                予定登録
             </x-responsive-nav-link>
         </div>
 
