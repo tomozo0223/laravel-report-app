@@ -18,8 +18,7 @@
             <tbody>
                 @forelse ($schedules as $index => $schedule)
                     <tr
-                        class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-green-100' : '' }}">
-                        {{-- onclick="location.href='{{ route('schedule.show', $schedule) }}'"> --}}
+                        class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-green-100' : '' }}"onclick="location.href='{{ route('schedule.show', $schedule) }}'">
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $schedule->site->name }}
                         </td>
