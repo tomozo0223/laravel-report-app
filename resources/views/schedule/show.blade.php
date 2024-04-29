@@ -26,7 +26,7 @@
             </div>
             <div class="flex justify-end">
                 <x-primary-button class="bg-green-600">
-                    <a href="#">更新</a>
+                    <a href="{{ route('schedule.edit', $schedule) }}">更新</a>
                 </x-primary-button>
                 <x-primary-button class="bg-red-600 ml-2">
                     削除
