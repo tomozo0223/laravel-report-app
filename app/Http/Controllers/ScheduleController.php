@@ -43,10 +43,15 @@ class ScheduleController extends Controller
 
         return redirect()->route('schedule.index')->with('message', '予定を登録しました。');
     }
-
     public function show(Schedule $schedule)
     {
         $schedule = Schedule::findOrFail($schedule->id);
         return view('schedule.show', compact('schedule'));
+    }
+
+    public function edit(Schedule $schedule)
+    {
+        $users = User::all();
+        return view('schedule.edit', compact('schedule', 'users'));
     }
 }
