@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ScheduleStoreRequest;
+use App\Http\Requests\ScheduleUpdateRequest;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Site;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
@@ -56,7 +56,7 @@ class ScheduleController extends Controller
         return view('schedule.edit', compact('schedule', 'users'));
     }
 
-    public function update(Request $request, Schedule $schedule)
+    public function update(ScheduleUpdateRequest $request, Schedule $schedule)
     {
         DB::transaction(function () use ($request, $schedule) {
             $schedule->site->name = $request->input('site_name');
