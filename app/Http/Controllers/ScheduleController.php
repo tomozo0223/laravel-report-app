@@ -6,6 +6,7 @@ use App\Http\Requests\ScheduleStoreRequest;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Site;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
@@ -53,5 +54,22 @@ class ScheduleController extends Controller
     {
         $users = User::all();
         return view('schedule.edit', compact('schedule', 'users'));
+    }
+
+    public function update(Request $request, Schedule $schedule)
+    {
+        DB::transaction(function () use ($request, $schedule) {
+            $schedule->site->name = $request->input('site_name');
+            $schedule->site->address = $request->input('address');
+            $schedule->site->save();
+
+            $schedule->work_details = $request->input('work_details');
+            $schedule->working_day = $request->input('working_day');
+            $schedule->save();
+
+            $schedule->users()->sync($request->input('member_id'));
+        });
+
+        return redirect()->route('schedule.show', $schedule)->with('message', '予定を登録しました。');
     }
 }
