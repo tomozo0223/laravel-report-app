@@ -3,8 +3,9 @@
         <h1 class="inline border-b-4 border-blue-300 pb-2">予定更新</h1>
     </x-slot:header>
     <div class="max-w-screen-lg md:w-4/5 w-96 m-auto md:p-0 p-4">
-        <form action="{{ route('schedule.store') }}" method="POST" class="mb-8">
+        <form action="{{ route('schedule.update', $schedule) }}" method="POST" class="mb-8">
             @csrf
+            @method('PATCH')
             <div class="mb-4">
                 <label for="site_name" class="block text-sm font-semibold text-gray-600">現場:</label>
                 <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
