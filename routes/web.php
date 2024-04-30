@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/', 'store')->name('store');
             Route::get('/{schedule}', 'show')->name('show');
             Route::get('/edit/{schedule}', 'edit')->name('edit');
-            // Route::patch('/{schedule}', 'update')->name('update');
+            Route::patch('/{schedule}', 'update')->name('update');
         });
 });
 
