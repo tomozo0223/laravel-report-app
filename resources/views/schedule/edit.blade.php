@@ -23,6 +23,14 @@
                 @enderror
             </div>
             <div class="mb-4">
+                <label for="working_day" class="block text-sm font-semibold text-gray-600">作業予定日:</label>
+                <input type="date" name="working_day" id="working_day" class="w-full p-2 border rounded-md"
+                    value="{{ $schedule->working_day }}">
+                @error('working_day')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
                 <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
                 <div class="grid md:grid-cols-8 grid-cols-2  gap-4">
                     @foreach ($users as $index => $user)
@@ -35,14 +43,6 @@
                     @endforeach
                 </div>
                 @error('member_id')
-                    <p class="text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <label for="working_day" class="block text-sm font-semibold text-gray-600">作業予定日:</label>
-                <input type="date" name="working_day" id="working_day" class="w-full p-2 border rounded-md"
-                    value="{{ $schedule->working_day }}">
-                @error('working_day')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
             </div>
