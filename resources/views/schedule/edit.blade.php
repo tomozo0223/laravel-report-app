@@ -31,7 +31,7 @@
                 @enderror
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
+                <label class="block text-sm font-semibold text-gray-600 mb-2">作業メンバー:</label>
                 <div class="grid md:grid-cols-8 grid-cols-2  gap-4">
                     @foreach ($users as $index => $user)
                         <label class="flex items-center">

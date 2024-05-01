@@ -44,13 +44,17 @@
                     value="{{ old('end_time', $report->end_time) }}">
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
-                @foreach ($users as $user)
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" name="user_id[]" value="{{ $user->id }}" class="mr-2"
-                            @checked(in_array($user->id, old('user_id', $reportUserId)))>
-                        {{ $user->name }} </label>
-                @endforeach
+                <label class="block text-sm font-semibold text-gray-600 mb-2">作業メンバー:</label>
+                <div class="grid md:grid-cols-8 grid-cols-2  gap-4">
+                    @foreach ($users as $user)
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="user_id[]" value="{{ $user->id }}"
+                                class="form-checkbox h-4 w-4 text-green-600 border-gray-300 rounded"
+                                @checked(in_array($user->id, old('user_id', $reportUserId)))>
+                            <span class="ml-2 text-sm text-gray-700">{{ $user->name }}</span>
+                        </label>
+                    @endforeach
+                </div>
             </div>
             <div class="mt-4">
                 <label for="image" class="block text-sm font-medium text-gray-700">
