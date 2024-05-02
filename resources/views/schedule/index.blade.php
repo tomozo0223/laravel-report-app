@@ -9,9 +9,9 @@
         <table class="w-full m-auto border border-gray-600 bg-white">
             <thead>
                 <tr class="text-sm md:text-base">
+                    <th class="p-2 md:py-2 md:px-4 bg-green-600 border-b text-white text-left">作業予定日</th>
                     <th class="p-2 md:py-2 md:px-4 bg-green-600 border-b text-white text-left">現場名</th>
                     <th class="p-2 md:py-2 md:px-4 bg-green-600 border-b text-white text-left">住所</th>
-                    <th class="p-2 md:py-2 md:px-4 bg-green-600 border-b text-white text-left">作業予定日</th>
                     <th class="p-2 md:py-2 md:px-4 bg-green-600 border-b text-white text-left">メンバー</th>
                 </tr>
             </thead>
@@ -20,15 +20,16 @@
                     <tr
                         class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-green-100' : '' }}"onclick="location.href='{{ route('schedule.show', $schedule) }}'">
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
+                            {{ $schedule->working_day }}
+                        </td>
+                        <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $schedule->site->name }}
                         </td>
                         <td
                             class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold  max-w-0 overflow-hidden text-ellipsis whitespace-nowrap	">
                             {{ $schedule->work_details }}
                         </td>
-                        <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
-                            {{ $schedule->working_day }}
-                        </td>
+
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
                             @foreach ($schedule->users as $user)
                                 {{ Str::limit($user->name, 5, '') }}
