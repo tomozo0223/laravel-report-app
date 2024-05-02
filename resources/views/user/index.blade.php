@@ -29,7 +29,7 @@
                                 退職
                             @endif
                         </td>
-                        <td class="py-2 px-4 border-b text-center">{{ $user->created_at->format('Y年m月d日') }}</td>
+                        <td class="py-2 px-4 border-b text-center">{{ $user->created_at->format('Y-m-d') }}</td>
                     </tr>
                 @endforeach
             </tbody>
