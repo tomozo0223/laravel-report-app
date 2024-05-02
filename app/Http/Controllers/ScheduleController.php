@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ScheduleStoreRequest;
+use App\Http\Requests\ScheduleUpdateRequest;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Site;
@@ -43,10 +44,32 @@ class ScheduleController extends Controller
 
         return redirect()->route('schedule.index')->with('message', '予定を登録しました。');
     }
-
     public function show(Schedule $schedule)
     {
         $schedule = Schedule::findOrFail($schedule->id);
         return view('schedule.show', compact('schedule'));
+    }
+
+    public function edit(Schedule $schedule)
+    {
+        $users = User::all();
+        return view('schedule.edit', compact('schedule', 'users'));
+    }
+
+    public function update(ScheduleUpdateRequest $request, Schedule $schedule)
+    {
+        DB::transaction(function () use ($request, $schedule) {
+            $schedule->site->name = $request->input('site_name');
+            $schedule->site->address = $request->input('address');
+            $schedule->site->save();
+
+            $schedule->work_details = $request->input('work_details');
+            $schedule->working_day = $request->input('working_day');
+            $schedule->save();
+
+            $schedule->users()->sync($request->input('member_id'));
+        });
+
+        return redirect()->route('schedule.show', $schedule)->with('message', '予定を登録しました。');
     }
 }
