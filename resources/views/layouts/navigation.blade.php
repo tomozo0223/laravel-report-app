@@ -25,21 +25,21 @@
                         </x-nav-link>
                     </div>
                     <div class="flex items-center">
-                        <i class="fa-regular fa-user text-white"></i>
-                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                            社員一覧
-                        </x-nav-link>
-                    </div>
-                    <div class="flex items-center">
                         <i class="fa-regular fa-calendar text-white"></i>
                         <x-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
-                            予定表
+                            予定一覧
                         </x-nav-link>
                     </div>
                     <div class="flex items-center">
                         <i class="fa-solid fa-pen-to-square text-white"></i>
                         <x-nav-link :href="route('schedule.create')" :active="request()->routeIs('schedule.create')">
                             予定登録
+                        </x-nav-link>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-regular fa-user text-white"></i>
+                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                            社員一覧
                         </x-nav-link>
                     </div>
                 </div>
@@ -108,14 +108,14 @@
             <x-responsive-nav-link :href="route('report.create')" :active="request()->routeIs('report.create')">
                 日報登録
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                ユーザー一覧
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
-                予定表
+                予定一覧
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.create')">
                 予定登録
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                ユーザー一覧
             </x-responsive-nav-link>
         </div>
 
