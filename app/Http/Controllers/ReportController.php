@@ -32,6 +32,7 @@ class ReportController extends Controller
 
     public function show(Report $report)
     {
+        $report = Report::findOrFail($report->id);
         $comments = $report->comments()
             ->with('user')
             ->orderBy('created_at', 'desc')
