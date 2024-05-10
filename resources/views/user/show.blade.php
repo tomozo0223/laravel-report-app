@@ -32,7 +32,7 @@
                 </tr>
                 <tr class="md:text-base text-sm">
                     <th class="bg-blue-200 py-2 px-4 border border-gray-600">登録日</th>
-                    <td class="py-2 px-4 border border-gray-600">{{ $user->created_at->format('Y年m月d日') }}</td>
+                    <td class="py-2 px-4 border border-gray-600">{{ $user->created_at->format('Y-m-d') }}</td>
                 </tr>
             </tbody>
         </table>

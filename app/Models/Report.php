@@ -49,8 +49,13 @@ class Report extends Model
             $query->whereHas('site', function (Builder $query) use ($keyword) {
                 $query->where('name', 'LIKE', "%$keyword%");
             });
-        })->with('user', 'site')
-            ->orderBy('working_day', 'desc', 'site.name', 'asc', 'user_id', 'asc')
+        })->orderBy('working_day', 'desc')
+            ->join('sites', 'reports.site_id', '=', 'sites.id')
+            ->select('reports.*', 'reports.id as report_id')
+            ->orderBy('sites.name', 'asc')
+            ->with(['site', 'users' => function (Builder $query) {
+                $query->orderBy('id', 'asc');
+            }])
             ->paginate(10)
             ->appends(['report_date' => $reportDate, "keyword" => $keyword]);
 

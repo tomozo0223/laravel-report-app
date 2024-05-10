@@ -40,7 +40,7 @@
             <tbody>
                 @foreach ($reports as $index => $report)
                     <tr class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}"
-                        onclick="location.href='{{ route('report.show', $report) }}'">
+                        onclick="location.href='{{ route('report.show', ['report' => $report->report_id]) }}'">
                         <td class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $report->working_day }}
                         </td>

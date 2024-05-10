@@ -7,13 +7,21 @@ use App\Http\Requests\ScheduleUpdateRequest;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\Site;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = Schedule::with(['site', 'users'])->paginate(10);
+        $schedules = Schedule::orderBy('working_day', 'desc')
+            ->join('sites', 'schedules.site_id', '=', 'sites.id')
+            ->select('schedules.*', 'schedules.id as schedule_id')
+            ->orderBy('sites.name', 'desc')
+            ->with(['site', 'users' => function (Builder $query) {
+                $query->orderBy('id', 'asc');
+            }])
+            ->paginate(10);
 
         return view('schedule.index', compact('schedules'));
     }
