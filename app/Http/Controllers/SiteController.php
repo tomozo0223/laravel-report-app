@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\SiteStoreRequest;
+use App\Models\Site;
 
 class SiteController extends Controller
 {
     public function index()
     {
-        return view('site.index');
+        $sites = Site::orderBy('created_at', 'desc')->paginate(10);
+        return view('site.index', compact('sites'));
+    }
+
+    public function store(SiteStoreRequest $request)
+    {
+        Site::create([
+            'name' => $request->input('name'),
+            'address' => $request->input('address')
+        ]);
+
+        return redirect()->route('site.index')->with('message', '現場を登録しました。');
     }
 }
