@@ -11,10 +11,16 @@
             <div class="mb-2">
                 <label for="name" class="block text-sm font-semibold text-gray-600">現場名:</label>
                 <input type="text" name="name" id="name" class="w-full p-2 border rounded-md">
+                @error('name')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-2">
                 <label for="address" class="block text-sm font-semibold text-gray-600">現場住所:</label>
                 <input type="text" name="address" id="address" class="w-full p-2 border rounded-md">
+                @error('address')
+                    <p class="text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             <div class="text-right">
                 <x-primary-button class="bg-blue-500">
