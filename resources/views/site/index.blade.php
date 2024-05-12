@@ -37,7 +37,8 @@
                                     編集
                                 </a>
                             </x-update-button>
-                            <form action="#" method="POST" class="inline-block">
+                            <form action="{{ route('site.destroy', ['site' => $site->id]) }}" method="POST"
+                                class="inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <x-danger-button>

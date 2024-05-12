@@ -82,6 +82,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/', 'store')->name('store');
             Route::get('/edit/{site}', 'edit')->name('edit');
             Route::patch('/{site}', 'update')->name('update');
+            Route::delete('/{site}', 'destroy')->name('destroy');
         });
 });
 
