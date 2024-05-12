@@ -20,12 +20,12 @@
             </thead>
             <tbody>
                 @forelse ($sites as $index => $site)
-                    <tr
-                        class="text-sm md:text-base hover:bg-gray-100 cursor-pointer {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}">
+                    <tr class="text-sm md:text-base hover:bg-gray-100 {{ $index % 2 === 1 ? 'bg-blue-100' : '' }}">
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
                             {{ $site->name }}
                         </td>
-                        <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
+                        <td
+                            class="w-1/4 p-1 md:py-2 md:px-4 border-b text-left font-bold max-w-0 overflow-hidden text-ellipsis whitespace-nowrap	">
                             {{ $site->address }}
                         </td>
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-left font-bold">
