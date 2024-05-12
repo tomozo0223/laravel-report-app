@@ -33,8 +33,8 @@
                         </td>
                         <td class="w-1/4 text-xs md:text-base p-2 md:py-2 md:px-4 border-b text-center font-bold">
                             <x-update-button class="inline-block">
-                                <a href="#">
-                                    更新
+                                <a href="{{ route('site.edit', ['site' => $site->id]) }}">
+                                    編集
                                 </a>
                             </x-update-button>
                             <form action="#" method="POST" class="inline-block">
