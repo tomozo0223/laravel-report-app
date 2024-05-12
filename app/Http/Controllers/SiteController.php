@@ -44,4 +44,10 @@ class SiteController extends Controller
 
         return redirect()->route('site.index')->with('message', '現場を更新しました。');
     }
+
+    public function destroy(Site $site)
+    {
+        $site->delete();
+        return redirect()->route('site.index')->with('message', '現場を削除しました。');
+    }
 }
