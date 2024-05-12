@@ -13,6 +13,11 @@ class SiteController extends Controller
         return view('site.index', compact('sites'));
     }
 
+    public function create()
+    {
+        return view('site.create');
+    }
+
     public function store(SiteStoreRequest $request)
     {
         Site::create([
