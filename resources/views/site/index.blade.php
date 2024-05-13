@@ -6,6 +6,7 @@
         <x-primary-button class="mb-4 bg-blue-500">
             <a href="{{ route('site.create') }}">現場登録</a>
         </x-primary-button>
+        <p class="text-red-600">日報と予定に設定されている現場は、削除できません。</p>
         @if (session('message'))
             <p class="text-red-600">{{ session('message') }}</p>
         @endif
@@ -37,14 +38,16 @@
                                     編集
                                 </a>
                             </x-update-button>
-                            <form action="{{ route('site.destroy', ['site' => $site->id]) }}" method="POST"
-                                class="inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <x-danger-button>
-                                    削除
-                                </x-danger-button>
-                            </form>
+                            @if (!$site->reports()->exists() && !$site->schedules()->exists())
+                                <form action="{{ route('site.destroy', ['site' => $site->id]) }}" method="POST"
+                                    class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-danger-button>
+                                        削除
+                                    </x-danger-button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @empty
