@@ -80,4 +80,13 @@ class ScheduleController extends Controller
 
         return redirect()->route('schedule.show', $schedule)->with('message', '予定を登録しました。');
     }
+
+    public function destroy(Schedule $schedule)
+    {
+        DB::transaction(function () use ($schedule) {
+            $schedule->users()->detach();
+            $schedule->delete();
+        });
+        return redirect()->route('schedule.index')->with('message', '予定を削除しました。');
+    }
 }
