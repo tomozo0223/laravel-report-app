@@ -50,8 +50,8 @@ class SiteController extends Controller
         if ($site->reports->isEmpty() && $site->schedules->isEmpty()) {
             $site->delete();
             return redirect()->route('site.index')->with('message', '現場を削除しました。');
+        } else {
+            return redirect()->route('site.index')->with('message', '現場は日報または予定に登録されているため削除できません。');
         }
-
-        return redirect()->route('site.index')->with('message', '現場は日報または予定に登録されているため削除できません。');
     }
 }
