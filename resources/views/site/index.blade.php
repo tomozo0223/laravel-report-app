@@ -47,6 +47,11 @@
                                         削除
                                     </x-danger-button>
                                 </form>
+                            @else
+                                <button type="submit"
+                                    class="'inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest">
+                                    削除
+                                </button>
                             @endif
                         </td>
                     </tr>
