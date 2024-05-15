@@ -6,9 +6,9 @@
         <x-primary-button class="mb-4 bg-blue-500">
             <a href="{{ route('site.create') }}">現場登録</a>
         </x-primary-button>
-        <p class="text-red-600">日報と予定に設定されている現場は、削除できません。</p>
+        <p class="text-red-600 font-bold">日報と予定に設定されている現場は、削除できません。</p>
         @if (session('message'))
-            <p class="text-red-600">{{ session('message') }}</p>
+            <p class="text-blue-600">{{ session('message') }}</p>
         @endif
         <table class="w-full m-auto border border-gray-600 bg-white">
             <thead>
