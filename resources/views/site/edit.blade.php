@@ -23,9 +23,9 @@
                 @enderror
             </div>
             <div class="text-right">
-                <x-primary-button class="bg-blue-500">
+                <x-update-button>
                     更新
-                </x-primary-button>
+                </x-update-button>
             </div>
         </form>
     </div>
