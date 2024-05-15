@@ -10,7 +10,7 @@
                 @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <select name="site_id" id="site_id">
+                <select name="site_id" id="site_id" class="border rounded-md">
                     @foreach ($sites as $site)
                         <option value="{{ $site->id }}">{{ $site->name }}</option>
                     @endforeach
