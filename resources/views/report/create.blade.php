@@ -10,7 +10,7 @@
                 @error('site_id')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <select name="site_id" id="site_id">
+                <select name="site_id" id="site_id" class="border rounded-md">
                     @foreach ($sites as $site)
                         <option value="{{ $site->id }}">{{ $site->name }}</option>
                     @endforeach
@@ -42,33 +42,35 @@
             </div>
             <div class="mb-4">
                 <label class="block text-sm font-semibold text-gray-600">作業メンバー:</label>
-                @foreach ($users as $index => $user)
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" name="user_id[{{ $index }}]" value="{{ $user->id }}"
-                            class="mr-2" @checked(old("user_id.$index"))>
-                        {{ $user->name }}
+                <div class="grid md:grid-cols-8 grid-cols-2  gap-4">
+                    @foreach ($users as $index => $user)
+                        <label class="flex items-center">
+                            <input type="checkbox" name="user_id[{{ $index }}]" value="{{ $user->id }}"
+                                class="form-checkbox h-4 w-4 text-green-600 border-gray-300 rounded"
+                                @checked(old("user_id.$index"))>
+                            <span class="ml-2 text-sm text-gray-700">{{ $user->name }}</span>
+                        </label>
+                    @endforeach
+                </div>
+                <div class="mt-4">
+                    <label for="image" class="block text-sm font-medium text-gray-700">
+                        画像を選択
                     </label>
-                @endforeach
-            </div>
-            <div class="mt-4">
-                <label for="image" class="block text-sm font-medium text-gray-700">
-                    画像を選択
-                </label>
-                <input type="file" name="image" id="image">
-            </div>
-            <div class="mb-4 mt-4">
-                <label for="body" class="block text-sm font-semibold text-gray-600">作業内容:</label>
-                @error('body')
-                    <p class="text-red-600">{{ $message }}</p>
-                @enderror
-                <textarea name="body" id="body" cols="30" rows="5" class="w-full p-2 border rounded-md"
-                    placeholder="作業内容を記入してください">{{ old('body') }}</textarea>
-            </div>
-            <div class="text-right mb-8">
-                <x-primary-button class="bg-blue-600">
-                    登録
-                </x-primary-button>
-            </div>
+                    <input type="file" name="image" id="image">
+                </div>
+                <div class="mb-4 mt-4">
+                    <label for="body" class="block text-sm font-semibold text-gray-600">作業内容:</label>
+                    @error('body')
+                        <p class="text-red-600">{{ $message }}</p>
+                    @enderror
+                    <textarea name="body" id="body" cols="30" rows="5" class="w-full p-2 border rounded-md"
+                        placeholder="作業内容を記入してください">{{ old('body') }}</textarea>
+                </div>
+                <div class="text-right mb-8">
+                    <x-primary-button class="bg-blue-600">
+                        登録
+                    </x-primary-button>
+                </div>
         </form>
     </div>
 </x-app-layout>
