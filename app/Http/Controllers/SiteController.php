@@ -47,7 +47,11 @@ class SiteController extends Controller
 
     public function destroy(Site $site)
     {
-        $site->delete();
-        return redirect()->route('site.index')->with('message', '現場を削除しました。');
+        if ($site->reports->isEmpty() && $site->schedules->isEmpty()) {
+            $site->delete();
+            return redirect()->route('site.index')->with('message', '現場を削除しました。');
+        }
+
+        return redirect()->route('site.index')->with('message', '現場は日報または予定に登録されているため削除できません。');
     }
 }
