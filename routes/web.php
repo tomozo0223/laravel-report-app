@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,17 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit/{schedule}', 'edit')->name('edit');
             Route::patch('/{schedule}', 'update')->name('update');
             Route::delete('/{schedule}', 'destroy')->name('destroy');
+        });
+    Route::prefix('site')
+        ->name('site.')
+        ->controller(SiteController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/edit/{site}', 'edit')->name('edit');
+            Route::patch('/{site}', 'update')->name('update');
+            Route::delete('/{site}', 'destroy')->name('destroy');
         });
 });
 
