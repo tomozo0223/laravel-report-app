@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/{schedule}', 'show')->name('show');
             Route::get('/edit/{schedule}', 'edit')->name('edit');
             Route::patch('/{schedule}', 'update')->name('update');
+            Route::delete('/{schedule}', 'destroy')->name('destroy');
         });
 });
 

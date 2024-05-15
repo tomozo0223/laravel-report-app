@@ -35,9 +35,13 @@
                 <x-primary-button class="bg-green-600">
                     <a href="{{ route('schedule.edit', $schedule) }}">編集</a>
                 </x-primary-button>
-                <x-primary-button class="bg-red-600 ml-2">
-                    削除
-                </x-primary-button>
+                <form action="{{ route('schedule.destroy', ['schedule' => $schedule->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <x-primary-button class="bg-red-600 ml-2">
+                        削除
+                    </x-primary-button>
+                </form>
             </div>
         </div>
     </div>
