@@ -53,9 +53,7 @@ class Report extends Model
             ->join('sites', 'reports.site_id', '=', 'sites.id')
             ->select('reports.*', 'reports.id as report_id')
             ->orderBy('sites.name', 'asc')
-            ->with(['site', 'users' => function (Builder $query) {
-                $query->orderBy('id', 'asc');
-            }])
+            ->with(['site', 'user'])
             ->paginate(10)
             ->appends(['report_date' => $reportDate, "keyword" => $keyword]);
 
