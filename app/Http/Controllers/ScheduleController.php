@@ -29,19 +29,15 @@ class ScheduleController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('schedule.create', compact('users'));
+        $sites = Site::all();
+        return view('schedule.create', compact('users', 'sites'));
     }
 
     public function store(ScheduleStoreRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $site = Site::create([
-                'name' => $request->site_name,
-                'address' => $request->address,
-            ]);
-
             $schedule = Schedule::create([
-                'site_id' => $site->id,
+                'site_id' => $request->site_id,
                 'work_details' => $request->work_details,
                 'working_day' => $request->working_day,
             ]);
