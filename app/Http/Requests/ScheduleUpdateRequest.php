@@ -22,8 +22,7 @@ class ScheduleUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'site_name' => ['required', 'string', 'max:20'],
-            'address' => ['required', 'string'],
+            'site_id' => ['required', 'string', 'exists:sites,id'],
             'member_id' => ['required', 'array'],
             'working_day' => ['required', 'date', 'after:today'],
             'work_details' => ['required', 'string', 'max:100'],
@@ -33,8 +32,7 @@ class ScheduleUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'site_name' => '現場',
-            'address' => '住所',
+            'site_id' => '現場',
             'member_id' => 'メンバー',
             'working_day' => '作業日',
             'work_details' => '作業内容',
