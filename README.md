@@ -31,4 +31,10 @@
 * Composer 2.6.6
 
 ### ER図
-![日報アプリER図](https://github.com/tomozo0223/laravel-report-app/assets/145981508/16c7fb2c-e1ef-4a98-a63c-54f31ba3d30d)
+![日報アプリER図](https://github.com/tomozo0223/laravel-report-app/assets/145981508/13f9383d-5dc4-4e5e-9efa-7f59c7546779)
+
+### 使い方
+1. ユーザー登録またはログイン
+2. 現場一覧ページの現場登録ボタンから新規現場を登録
+3. 予定登録ページから登録されている現場を選択して、予定を登録
+4. 日報登録ページから登録されている現場を選択して、日報を登録
