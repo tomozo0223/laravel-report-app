@@ -29,19 +29,15 @@ class ScheduleController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('schedule.create', compact('users'));
+        $sites = Site::all();
+        return view('schedule.create', compact('users', 'sites'));
     }
 
     public function store(ScheduleStoreRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $site = Site::create([
-                'name' => $request->site_name,
-                'address' => $request->address,
-            ]);
-
             $schedule = Schedule::create([
-                'site_id' => $site->id,
+                'site_id' => $request->site_id,
                 'work_details' => $request->work_details,
                 'working_day' => $request->working_day,
             ]);
@@ -61,14 +57,14 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         $users = User::all();
-        return view('schedule.edit', compact('schedule', 'users'));
+        $sites = Site::all();
+        return view('schedule.edit', compact('schedule', 'users', 'sites'));
     }
 
     public function update(ScheduleUpdateRequest $request, Schedule $schedule)
     {
         DB::transaction(function () use ($request, $schedule) {
-            $schedule->site->name = $request->input('site_name');
-            $schedule->site->address = $request->input('address');
+            $schedule->site_id = $request->input('site_id');
             $schedule->site->save();
 
             $schedule->work_details = $request->input('work_details');
@@ -78,7 +74,7 @@ class ScheduleController extends Controller
             $schedule->users()->sync($request->input('member_id'));
         });
 
-        return redirect()->route('schedule.show', $schedule)->with('message', '予定を登録しました。');
+        return redirect()->route('schedule.show', $schedule)->with('message', '予定を更新しました。');
     }
 
     public function destroy(Schedule $schedule)

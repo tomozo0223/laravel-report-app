@@ -6,18 +6,13 @@
         <form action="{{ route('schedule.store') }}" method="POST" class="mb-8">
             @csrf
             <div class="mb-4">
-                <label for="site_name" class="block text-sm font-semibold text-gray-600">現場:</label>
-                <input type="text" name="site_name" id="site_name" class="w-full p-2 border rounded-md"
-                    value="{{ old('site_name') }}">
+                <label for="site_id" class="block text-sm font-semibold text-gray-600">現場:</label>
+                <select name="site_id" id="site_id">
+                    @foreach ($sites as $site)
+                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                    @endforeach
+                </select>
                 @error('site_name')
-                    <p class="text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <label for="address" class="block text-sm font-semibold text-gray-600">住所:</label>
-                <input type="text" name="address" id="address" class="w-full p-2 border rounded-md"
-                    value="{{ old('address') }}">
-                @error('address')
                     <p class="text-red-600">{{ $message }}</p>
                 @enderror
             </div>
